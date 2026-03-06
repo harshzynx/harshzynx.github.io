@@ -3,138 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Raj | Harshzynx Portfolio</title>
-    
-    <link rel="icon" type="image/png" href="favicon.png"> 
-
+    <title>Harsh Raj | Harshzynx Elite</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #00d2ff; --secondary: #92fe9d; --bg: #030303; }
+        :root { --primary: #00d2ff; --bg: #030303; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body { margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
-
-        /* Moving Stars Background */
+        body { margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: white; text-align: center; }
         #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-
-        .container { max-width: 800px; margin: 0 auto; padding: 100px 20px 60px; }
-
-        /* Status Bar with Logo */
-        .nav-status {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(255,255,255,0.05); backdrop-filter: blur(15px);
-            padding: 10px 25px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
-            font-size: 11px; letter-spacing: 2px; z-index: 1000; display: flex; gap: 20px;
-            white-space: nowrap; align-items: center;
+        
+        .container { max-width: 600px; margin: 0 auto; padding: 80px 20px; }
+        
+        /* 5-PHOTO SLIDER STYLING */
+        .slider-container {
+            width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); 
+            margin: 0 auto 30px; overflow: hidden; position: relative; 
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.4);
+        }
+        .slider-wrapper {
+            display: flex; width: 500%; /* 5 images = 500% */
+            height: 100%; transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+        .slider-wrapper img {
+            width: 20%; height: 100%; object-fit: cover;
         }
 
-        /* 2. LOGO STYLING */
-        .logo-img { width: 25px; height: 25px; border-radius: 5px; }
+        h1 { font-size: 2.8rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
+        .tagline { color: #888; margin-bottom: 40px; font-weight: 600; }
 
-        /* Hero & Photo Effects */
-        .hero { text-align: center; margin-bottom: 50px; }
-        .profile-wrapper { position: relative; width: 170px; height: 170px; margin: 0 auto 30px; overflow: visible; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); padding: 5px; transition: 0.5s; }
-        .profile-wrapper:hover .profile-img { transform: scale(1.15); box-shadow: 0 0 50px rgba(0, 210, 255, 0.6); }
-        .online-dot { position: absolute; bottom: 15px; right: 15px; width: 20px; height: 20px; background: #25D366; border: 4px solid var(--bg); border-radius: 50%; box-shadow: 0 0 15px #25D366; z-index: 2; }
+        /* INTERACTIVE MENU */
+        .menu-btn {
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 22px; border-radius: 25px; margin-bottom: 15px; color: white;
+            font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .menu-btn:hover { background: rgba(0, 210, 255, 0.15); border-color: var(--primary); transform: scale(1.02); }
 
-        h1 { font-size: 3.8rem; margin: 0; letter-spacing: -3px; font-weight: 800; line-height: 1; }
-        .gradient-text { background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .content-box {
+            max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
+            background: rgba(255,255,255,0.02); border-radius: 0 0 25px 25px;
+            margin-top: -15px; margin-bottom: 20px; text-align: left;
+        }
+        .content-box.active { max-height: 500px; opacity: 1; padding: 25px; border: 1px solid rgba(255,255,255,0.05); border-top: none; }
 
-        /* Bento Grid */
-        .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 50px; }
-        .card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 35px; padding: 35px; transition: 0.4s ease; backdrop-filter: blur(15px); }
-        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .full-width { grid-column: span 2; }
+        .social-link { display: block; color: #aaa; text-decoration: none; margin-bottom: 15px; font-size: 16px; }
+        .social-link:hover { color: var(--primary); padding-left: 10px; transition: 0.3s; }
 
-        /* Tech Tags */
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .tag { background: rgba(0, 210, 255, 0.1); color: var(--primary); padding: 6px 15px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(0, 210, 255, 0.2); }
-
-        /* Action Buttons */
-        .btn-group { display: flex; gap: 15px; margin-top: 40px; }
-        .btn { flex: 1; padding: 20px; border-radius: 25px; text-decoration: none; font-weight: 700; text-align: center; transition: 0.3s; font-size: 14px; }
-        .btn-wa { background: #25D366; color: white; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
-        .btn-wa:hover { transform: scale(1.05); }
-        .btn-resume { background: white; color: black; }
-        .btn-resume:hover { background: var(--primary); color: white; }
-
-        .footer { text-align: center; margin-top: 80px; padding-bottom: 40px; }
-        .footer-links a { color: #555; font-size: 22px; margin: 0 15px; transition: 0.3s; }
-        .footer-links a:hover { color: var(--primary); }
-
-        @media (max-width: 650px) { .bento-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } h1 { font-size: 2.8rem; } }
+        .footer { margin-top: 50px; font-size: 10px; color: #444; letter-spacing: 3px; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
     </style>
 </head>
 <body>
-
     <canvas id="canvas-stars"></canvas>
 
-    <div class="nav-status">
-        <img src="logo.png" alt="HX Logo" class="logo-img" onerror="this.src='https://ui-avatars.com/api/?name=HX&background=00d2ff&color=fff'">
-        <span>HARSHZYNX CORE</span>
-        <span>|</span>
-        <span><i class="fas fa-university"></i> MU RAJKOT</span>
-    </div>
-
     <div class="container">
-        <div class="hero">
-            <div class="profile-wrapper">
-                <img src="profile.jpg" alt="Harsh Raj" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+Raj&background=00d2ff&color=fff'">
-                <div class="online-dot"></div>
-            </div>
-            <h1>Harsh <span class="gradient-text">Raj</span></h1>
-            <p style="color: #666; font-weight: 600; margin-top: 15px; letter-spacing: 1px;">FULL STACK DEVELOPER | PYTHON EXPERT</p>
-        </div>
-
-        <div class="bento-grid">
-            <div class="card full-width">
-                <h3 style="margin:0; font-size:0.8rem; letter-spacing:2px; color:#555;">01 / BACKGROUND</h3>
-                <p style="font-size:1.1rem; line-height:1.7; color:#bbb; margin-top:20px;">Born in <b>Jehanabad (Bihar)</b>, now at <b>Marwadi University, Rajkot</b> (2024-2028). I bridge complex code with intuitive design.</p>
-            </div>
-
-            <div class="card">
-                <h3 style="margin:0; font-size:0.8rem; letter-spacing:2px; color:#555;">02 / TECH STACK</h3>
-                <div class="tag-cloud">
-                    <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">GitHub</span><span class="tag">Web Design</span><span class="tag">UI/UX</span><span class="tag">SEO</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3 style="margin:0; font-size:0.8rem; letter-spacing:2px; color:#555;">03 / EDUCATION</h3>
-                <div style="margin-top:20px;">
-                    <p style="margin:0; font-weight:700;">Manas International School</p><p style="font-size:12px; color:#666;">Secondary & Higher Secondary</p>
-                    <hr style="border:0; border-top:1px solid rgba(255,255,255,0.05); margin:15px 0;">
-                    <p style="margin:0; font-weight:700;">Marwadi University</p><p style="font-size:12px; color:#666;">B.Tech CSE Student</p>
-                </div>
-            </div>
-
-            <div class="card full-width" style="text-align: center;">
-                <h3 style="margin:0 0 20px; font-size:0.8rem; letter-spacing:2px; color:#555;">04 / CODE REPOSITORY</h3>
-                <a href="https://github.com/harsh62h" target="_blank" style="text-decoration:none; color:white;"><i class="fab fa-github" style="font-size:30px; margin-bottom:10px;"></i><p style="margin:0;">harsh62h / Portfolio</p></a>
+        <div class="slider-container">
+            <div class="slider-wrapper" id="slider">
+                <img src="photo1.jpg" alt="Harsh 1" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+1&background=00d2ff&color=fff'">
+                <img src="photo2.jpg" alt="Harsh 2" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+2&background=92fe9d&color=000'">
+                <img src="photo3.jpg" alt="Harsh 3" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+3&background=fff&color=000'">
+                <img src="photo4.jpg" alt="Harsh 4" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+4&background=00d2ff&color=fff'">
+                <img src="photo5.jpg" alt="Harsh 5" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+5&background=92fe9d&color=000'">
             </div>
         </div>
 
-        <div class="btn-group">
-            <a href="https://wa.me/919263216785" class="btn btn-wa"><i class="fab fa-whatsapp"></i> MESSAGE ONLY</a>
-            <a href="javascript:void(0)" onclick="downloadResume()" class="btn btn-resume"><i class="fas fa-cloud-download-alt"></i> RESUME</a>
+        <h1>HARSH <span style="color:var(--primary)">RAJ</span></h1>
+        <p class="tagline">HARSHZYNX | MU RAJKOT</p>
+
+        <button class="menu-btn" onclick="toggleSection('social')">
+            <span><i class="fas fa-hashtag"></i> SOCIAL NETWORK</span>
+            <i class="fas fa-plus"></i>
+        </button>
+        <div id="social" class="content-box">
+            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.instagram.com/harshzynx/" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.facebook.com/share/18YLdvxKJV/" target="_blank" class="social-link"><i class="fab fa-facebook"></i> Facebook</a>
         </div>
 
-        <div class="footer">
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/harshzynx-09a42a275"><i class="fab fa-linkedin"></i></a><a href="https://www.instagram.com/harshzynx/"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/share/18YLdvxKJV/"><i class="fab fa-facebook"></i></a>
-            </div>
-            <p style="margin-top:40px; font-size:10px; color:#333; letter-spacing:3px;">DESIGNED BY HARSH RAJ | © 2026</p>
+        <button class="menu-btn" onclick="toggleSection('edu')">
+            <span><i class="fas fa-graduation-cap"></i> EDUCATION</span>
+            <i class="fas fa-plus"></i>
+        </button>
+        <div id="edu" class="content-box">
+            <p style="margin:0; font-weight:700;">Marwadi University, Rajkot</p>
+            <p style="font-size:12px; color:#666; margin-bottom:15px;">B.Tech CSE | 2024-2028</p>
+            <p style="margin:0; font-weight:700;">Manas International School</p>
+            <p style="font-size:12px; color:#666;">Jehanabad, Bihar</p>
         </div>
+
+        <button class="menu-btn" onclick="toggleSection('contact')">
+            <span><i class="fas fa-comment"></i> QUICK MESSAGE</span>
+            <i class="fas fa-plus"></i>
+        </button>
+        <div id="contact" class="content-box">
+            <a href="https://wa.me/919263216785" target="_blank" style="background:#25D366; color:white; padding:15px; display:block; text-align:center; border-radius:15px; text-decoration:none; font-weight:700;">
+                <i class="fab fa-whatsapp"></i> MESSAGE ON WHATSAPP
+            </a>
+        </div>
+
+        <div class="footer">SYSTEM_CORE: HARSHZYNX | © 2026</div>
     </div>
 
     <script>
-        function downloadResume() {
-            const data = `HARSH RAJ (HARSHZYNX)\nB.Tech CSE - Marwadi University\nLocation: Rajkot, Gujarat\nWhatsApp: 9263216785\nGitHub: harsh62h`;
-            const blob = new Blob([data], {type: 'text/plain'});
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url; a.download = 'HarshRaj_Resume.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        // Automatic Slider Logic for 5 photos
+        const slider = document.getElementById('slider');
+        let currentSlide = 0;
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % 5; // Loop through 5 images
+            slider.style.transform = `translateX(-${currentSlide * 20}%)`; // Shift 20% each time
+        }
+        setInterval(autoSlide, 3000); // Change image every 3 seconds
+
+        function toggleSection(id) {
+            const sections = document.querySelectorAll('.content-box');
+            sections.forEach(sec => {
+                if(sec.id === id) sec.classList.toggle('active');
+                else sec.classList.remove('active');
+            });
         }
 
         const canvas = document.getElementById('canvas-stars');
@@ -145,7 +130,7 @@
             for(let i=0; i<150; i++) stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2, speed: Math.random() * 0.4 });
         }
         function animate() {
-            ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+            ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "white";
             stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > canvas.height) s.y = 0; });
             requestAnimationFrame(animate);
         }
@@ -153,3 +138,5 @@
     </script>
 </body>
 </html>
+
+        
