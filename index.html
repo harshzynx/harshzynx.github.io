@@ -14,14 +14,14 @@
         
         .container { max-width: 600px; margin: 0 auto; padding: 80px 20px; }
         
-        /* 5-PHOTO SLIDER STYLING */
+        /* EXACT FILE MATCH SLIDER */
         .slider-container {
             width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); 
             margin: 0 auto 30px; overflow: hidden; position: relative; 
             box-shadow: 0 0 40px rgba(0, 210, 255, 0.4);
         }
         .slider-wrapper {
-            display: flex; width: 500%; /* 5 images = 500% */
+            display: flex; width: 500%; /* 5 images loaded in your GitHub */
             height: 100%; transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
         }
         .slider-wrapper img {
@@ -31,7 +31,6 @@
         h1 { font-size: 2.8rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
         .tagline { color: #888; margin-bottom: 40px; font-weight: 600; }
 
-        /* INTERACTIVE MENU */
         .menu-btn {
             width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
             padding: 22px; border-radius: 25px; margin-bottom: 15px; color: white;
@@ -47,9 +46,6 @@
         }
         .content-box.active { max-height: 500px; opacity: 1; padding: 25px; border: 1px solid rgba(255,255,255,0.05); border-top: none; }
 
-        .social-link { display: block; color: #aaa; text-decoration: none; margin-bottom: 15px; font-size: 16px; }
-        .social-link:hover { color: var(--primary); padding-left: 10px; transition: 0.3s; }
-
         .footer { margin-top: 50px; font-size: 10px; color: #444; letter-spacing: 3px; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
     </style>
 </head>
@@ -59,11 +55,9 @@
     <div class="container">
         <div class="slider-container">
             <div class="slider-wrapper" id="slider">
-                <img src="photo1.jpg" alt="Harsh 1" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+1&background=00d2ff&color=fff'">
-                <img src="photo2.jpg" alt="Harsh 2" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+2&background=92fe9d&color=000'">
-                <img src="photo3.jpg" alt="Harsh 3" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+3&background=fff&color=000'">
-                <img src="photo4.jpg" alt="Harsh 4" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+4&background=00d2ff&color=fff'">
-                <img src="photo5.jpg" alt="Harsh 5" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+5&background=92fe9d&color=000'">
+                <img src="photo1.jpg" alt="Harsh 1">
+                <img src="photo2.jpg" alt="Harsh 2">
+                <img src="Photo3.jpg" alt="Harsh 3"> <img src="photo4 (1).jpg" alt="Harsh 4"> <img src="profile.jpg" alt="Harsh 5">
             </div>
         </div>
 
@@ -75,9 +69,9 @@
             <i class="fas fa-plus"></i>
         </button>
         <div id="social" class="content-box">
-            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.instagram.com/harshzynx/" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.facebook.com/share/18YLdvxKJV/" target="_blank" class="social-link"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.instagram.com/harshzynx/" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.facebook.com/share/18YLdvxKJV/" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-facebook"></i> Facebook</a>
         </div>
 
         <button class="menu-btn" onclick="toggleSection('edu')">
@@ -105,14 +99,13 @@
     </div>
 
     <script>
-        // Automatic Slider Logic for 5 photos
         const slider = document.getElementById('slider');
         let currentSlide = 0;
         function autoSlide() {
-            currentSlide = (currentSlide + 1) % 5; // Loop through 5 images
-            slider.style.transform = `translateX(-${currentSlide * 20}%)`; // Shift 20% each time
+            currentSlide = (currentSlide + 1) % 5;
+            slider.style.transform = `translateX(-${currentSlide * 20}%)`;
         }
-        setInterval(autoSlide, 3000); // Change image every 3 seconds
+        setInterval(autoSlide, 3000);
 
         function toggleSection(id) {
             const sections = document.querySelectorAll('.content-box');
@@ -138,5 +131,3 @@
     </script>
 </body>
 </html>
-
-        
