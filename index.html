@@ -3,163 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshzynx | Portfolio</title>
+    <title>Harsh Raj | Harshzynx</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: #050505; color: white; overflow-x: hidden; }
+        #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #050505; }
+        .container { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
-            width: 320px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+        /* PROFILE IMAGE */
+        .profile-img {
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 4px solid #00d2ff; margin-bottom: 20px;
+            object-fit: cover; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
             animation: fadeIn 1.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        h1 { font-size: 2.8rem; margin: 0; background: linear-gradient(to right, #00d2ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .typing-box { font-size: 1.1rem; color: #888; height: 30px; margin-top: 5px; }
+        #typing-text { color: #00d2ff; font-weight: 600; }
 
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #00d2ff, #3a7bd5);
-            -webkit-background-clip: text;
-            -webkit-fill-color: transparent;
-            color: #00d2ff;
+        .resume-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            color: white; text-decoration: none; padding: 16px; border-radius: 50px;
+            font-weight: 700; margin: 30px 0; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,210,255,0.3);
         }
+        .resume-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,210,255,0.5); }
 
-        p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 25px; margin-bottom: 25px; text-align: left; }
+        h2 { font-size: 1rem; color: #00d2ff; text-transform: uppercase; margin-top: 0; display: flex; align-items: center; gap: 10px; }
 
-        #typing-text {
-            color: #00d2ff;
-            font-weight: 700;
-            border-right: 2px solid #00d2ff;
-            padding-right: 5px;
-        }
+        .skill-tag { background: rgba(0, 210, 255, 0.1); padding: 5px 12px; border-radius: 8px; font-size: 12px; border: 1px solid rgba(0, 210, 255, 0.2); margin: 4px; display: inline-block; }
 
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn { text-decoration: none; color: #fff; padding: 12px; border-radius: 15px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .btn:hover { background: #fff; color: #000; }
 
-        .btn {
-            text-decoration: none;
-            color: white;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 14px;
-        }
-
-        .btn-linkedin { background: #0077b5; }
-        .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .btn-facebook { background: #1877f2; }
-        .btn-x { background: #000000; border: 1px solid #333; }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 10px;
-            color: #888;
-            letter-spacing: 1px;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
-
-    <div class="card">
+    <canvas id="canvas-stars"></canvas>
+    <div class="container">
+        <img src="profile.jpg" alt="Harsh Raj" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+Raj&background=00d2ff&color=fff'">
         <h1>Harsh Raj</h1>
-        <p>I am a <span id="typing-text"></span></p>
+        <div class="typing-box"><span id="typing-text"></span></div>
 
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" class="btn btn-linkedin" target="_blank">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
+        <a href="javascript:void(0);" onclick="alert('HARSH RAJ\nB.Tech 2024-2028\nMarwadi University\nRajkot, Gujarat\n\nFull Stack Developer & Tech Enthusiast')" class="resume-btn">
+            <i class="fas fa-id-card"></i> QUICK RESUME
+        </a>
 
-            <a href="https://www.instagram.com/harshzynx" class="btn btn-instagram" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-
-            <a href="https://www.facebook.com/profile.php?id=100076241908092" class="btn btn-facebook" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-
-            <a href="https://x.com/harshzynx" class="btn btn-x" target="_blank">
-                <i class="fab fa-x-twitter"></i> X (Twitter)
-            </a>
+        <div class="card">
+            <h2><i class="fas fa-university"></i> Education</h2>
+            <p style="margin:5px 0; font-weight:600;">Marwadi University, Rajkot</p>
+            <p style="margin:0; font-size:14px; color:#aaa;">Bachelor of Technology | 2024 - 2028</p>
         </div>
 
-        <div class="footer">
-            © 2026 HARSHZYNX DIGITAL
+        <div class="card">
+            <h2><i class="fas fa-code"></i> My Tech Stack</h2>
+            <div class="skill-tag">Python</div> <div class="skill-tag">JavaScript</div> <div class="skill-tag">Web Design</div> <div class="skill-tag">GitHub</div> <div class="skill-tag">Branding</div>
         </div>
+
+        <div class="card">
+            <h2><i class="fas fa-globe"></i> Connect</h2>
+            <div class="social-grid">
+                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" class="btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/harshzynx" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=100076241908092" class="btn" target="_blank"><i class="fab fa-facebook"></i> FB</a>
+                <a href="https://x.com/harshzynx" class="btn" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+            </div>
+        </div>
+        <p style="font-size:10px; color:#555;">© 2026 Harshzynx Digital | Built with ❤️ from Rajkot</p>
     </div>
 
     <script>
         const textElement = document.getElementById("typing-text");
-        const phrases = ["Full Stack Developer", "Known as Harshzynx", "Tech Enthusiast", "Creative Thinker"];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
+        const phrases = ["Full Stack Developer", "Student @ Marwadi University", "Tech Enthusiast"];
+        let pIdx=0, cIdx=0, isDel=false;
         function type() {
-            const currentPhrase = phrases[phraseIndex];
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typeSpeed = 2000; 
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
+            const current = phrases[pIdx];
+            textElement.textContent = isDel ? current.substring(0, cIdx-1) : current.substring(0, cIdx+1);
+            cIdx = isDel ? cIdx-1 : cIdx+1;
+            let speed = isDel ? 50 : 100;
+            if(!isDel && cIdx === current.length) { isDel=true; speed=2000; }
+            else if(isDel && cIdx === 0) { isDel=false; pIdx=(pIdx+1)%phrases.length; speed=500; }
+            setTimeout(type, speed);
         }
-
-        document.addEventListener("DOMContentLoaded", type);
+        const canvas=document.getElementById('canvas-stars'); const ctx=canvas.getContext('2d'); let stars=[];
+        function init(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; stars=[]; for(let i=0;i<100;i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5, v:Math.random()*0.5}); }
+        function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="white"; stars.forEach(s=>{ ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); s.y+=s.v; if(s.y>canvas.height)s.y=0; }); requestAnimationFrame(draw); }
+        window.addEventListener('resize', init); init(); draw(); type();
     </script>
 </body>
 </html>
