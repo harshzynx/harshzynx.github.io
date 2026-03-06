@@ -3,131 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Raj | Harshzynx Elite</title>
+    <title>Harsh Raj | Harshzynx Elite Portfolio</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --primary: #00d2ff; --bg: #030303; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: white; text-align: center; }
-        #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        
-        .container { max-width: 600px; margin: 0 auto; padding: 80px 20px; }
-        
-        /* EXACT FILE MATCH SLIDER */
-        .slider-container {
-            width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); 
-            margin: 0 auto 30px; overflow: hidden; position: relative; 
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.4);
-        }
-        .slider-wrapper {
-            display: flex; width: 500%; /* 5 images loaded in your GitHub */
-            height: 100%; transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-        }
-        .slider-wrapper img {
-            width: 20%; height: 100%; object-fit: cover;
+        /* Base Styling */
+        :root { 
+            --primary: #00d2ff; 
+            --secondary: #92fe9d; 
+            --bg: #030303; 
+            --card-bg: rgba(255, 255, 255, 0.03);
         }
 
-        h1 { font-size: 2.8rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
-        .tagline { color: #888; margin-bottom: 40px; font-weight: 600; }
-
-        .menu-btn {
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            padding: 22px; border-radius: 25px; margin-bottom: 15px; color: white;
-            font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s;
-            display: flex; justify-content: space-between; align-items: center;
+        * { 
+            box-sizing: border-box; 
+            scroll-behavior: smooth; 
         }
-        .menu-btn:hover { background: rgba(0, 210, 255, 0.15); border-color: var(--primary); transform: scale(1.02); }
 
-        .content-box {
-            max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
-            background: rgba(255,255,255,0.02); border-radius: 0 0 25px 25px;
-            margin-top: -15px; margin-bottom: 20px; text-align: left;
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Space Grotesk', sans-serif; 
+            background: var(--bg); 
+            color: white; 
+            text-align: center; 
+            overflow-x: hidden; 
         }
-        .content-box.active { max-height: 500px; opacity: 1; padding: 25px; border: 1px solid rgba(255,255,255,0.05); border-top: none; }
 
-        .footer { margin-top: 50px; font-size: 10px; color: #444; letter-spacing: 3px; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
+        /* Animated Star Background */
+        #canvas-stars { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+        }
+
+        .container { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+        }
+
+        /* 1. FIXED CIRCLE PHOTO SECTION */
+        .header-box { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin-bottom: 30px; 
+            animation: fadeIn 1.5s ease;
+        }
+
+        .main-profile-circle { 
+            width: 160px; 
+            height: 160px; 
+            border-radius: 50%; 
+            border: 4px solid var(--primary); 
+            padding: 5px; 
+            margin-bottom: 15px; 
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.5); 
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .main-profile-circle:hover { 
+            transform: scale(1.1) rotate(5deg); 
+            border-color: var(--secondary);
+        }
+
+        .main-profile-circle img { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 50%; 
+            object-fit: cover; 
+        }
+
+        h1 { font-size: 3rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
+        .username { color: #666; font-size: 14px; letter-spacing: 2px; margin-top: 5px; font-weight: 600; }
+
+        /* 3. MUSIC BAR SECTION */
+        .music-player-container {
+            background: rgba(0, 210, 255, 0.07);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            padding: 15px 30px;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-info { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; }
+        .play-btn { 
+            font-size: 32px; 
+            color: var(--primary); 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .play-btn:hover { transform: scale(1.15); color: #fff; }
+
+        /* 1. DYNAMIC SLIDER SECTION (5 PHOTOS) */
+        .slider-outer { 
+            width: 100%; 
+            height: 250px; 
+            border-radius: 35px; 
+            overflow: hidden; 
+            margin: 20px 0; 
+            border: 2px solid rgba(255,255,255,0.08); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .slider-track { 
+            display: flex; 
+            width: 500%; /* 5 Photos = 500% */
+            height: 100%; 
+            transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1); 
+        }
+
+        .slider-track img { 
+            width: 20%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        /* CARD STYLING (SKILLS & RESUME) */
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 35px; 
+            padding: 35px; 
+            margin-bottom: 25px; 
+            text-align: left; 
+            backdrop-filter: blur(12px); 
+            transition: 0.4s;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-top: 0; display: flex; align-items: center; gap: 12px; }
+
+        /* 6. SKILLS CHIPS */
+        .skill-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .skill-chip { 
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5); 
+            color: black; 
+            padding: 8px 18px; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+        }
+
+        .download-trigger { 
+            background: #fff; 
+            color: #000; 
+            padding: 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            display: block; 
+            margin-top: 25px; 
+            text-align: center; 
+            transition: 0.3s; 
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .download-trigger:hover { 
+            background: var(--primary); 
+            color: white; 
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        /* 5. SCANNER SECTION */
+        .qr-wrapper { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 25px; 
+            display: inline-block; 
+            margin: 20px 0; 
+        }
+
+        .qr-wrapper img { width: 140px; height: 140px; display: block; }
+
+        /* 2. SOCIAL MEDIA LINKS (X INCLUDED) */
+        .social-bar { 
+            display: flex; 
+            justify-content: center; 
+            gap: 35px; 
+            margin-top: 50px; 
+        }
+
+        .social-bar a { 
+            color: #555; 
+            font-size: 32px; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .social-bar a:hover { 
+            color: var(--primary); 
+            transform: translateY(-10px) scale(1.2); 
+        }
+
+        footer { 
+            margin-top: 80px; 
+            color: #222; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
+
     <canvas id="canvas-stars"></canvas>
+    
+    <audio id="harshAudio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
-        <div class="slider-container">
-            <div class="slider-wrapper" id="slider">
-                <img src="photo1.jpg" alt="Harsh 1">
-                <img src="photo2.jpg" alt="Harsh 2">
-                <img src="Photo3.jpg" alt="Harsh 3"> <img src="photo4 (1).jpg" alt="Harsh 4"> <img src="profile.jpg" alt="Harsh 5">
+        
+        <div class="header-box">
+            <div class="main-profile-circle">
+                <img src="profile.jpg" alt="Harsh Raj Profile"> </div>
+            <h1>Harsh <span style="color:var(--primary)">Raj</span></h1>
+            <div class="username">@HARSHZYNX | MU RAJKOT</div>
+        </div>
+
+        <div class="music-player-container">
+            <div class="music-info">
+                <i class="fas fa-compact-disc fa-spin"></i>
+                <span>LOFI BOLLYWOOD VIBE</span>
+            </div>
+            <i class="fas fa-play-circle play-btn" id="musicToggle" onclick="handleMusic()"></i>
+        </div>
+
+        <div class="slider-outer">
+            <div class="slider-track" id="photoTrack">
+                <img src="photo1.jpg" alt="Harsh Pose 1">
+                <img src="photo2.jpg" alt="Harsh Pose 2">
+                <img src="Photo3.jpg" alt="Harsh Pose 3">
+                <img src="photo4 (1).jpg" alt="Harsh Pose 4">
+                <img src="profile.jpg" alt="Harsh Pose 5">
             </div>
         </div>
 
-        <h1>HARSH <span style="color:var(--primary)">RAJ</span></h1>
-        <p class="tagline">HARSHZYNX | MU RAJKOT</p>
-
-        <button class="menu-btn" onclick="toggleSection('social')">
-            <span><i class="fas fa-hashtag"></i> SOCIAL NETWORK</span>
-            <i class="fas fa-plus"></i>
-        </button>
-        <div id="social" class="content-box">
-            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.instagram.com/harshzynx/" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.facebook.com/share/18YLdvxKJV/" target="_blank" style="display:block; color:#aaa; text-decoration:none; margin-bottom:15px;"><i class="fab fa-facebook"></i> Facebook</a>
+        <div class="card">
+            <h3><i class="fas fa-code-branch"></i> Engineering Stack</h3>
+            <p style="color:#777; font-size:14px; line-height:1.6;">
+                B.Tech Computer Science student at Marwadi University. 
+                Expertise in Python development, algorithmic logic, and modern UI design.
+            </p>
+            <div class="skill-container">
+                <div class="skill-chip">PYTHON</div>
+                <div class="skill-chip">JAVA</div>
+                <div class="skill-chip">C++</div>
+                <div class="skill-chip">JAVASCRIPT</div>
+                <div class="skill-chip">SEO</div>
+                <div class="skill-chip">C LANGUAGE</div>
+            </div>
+            <button onclick="triggerDownload()" class="download-trigger">
+                <i class="fas fa-cloud-download-alt"></i> DOWNLOAD PRO RESUME
+            </button>
         </div>
 
-        <button class="menu-btn" onclick="toggleSection('edu')">
-            <span><i class="fas fa-graduation-cap"></i> EDUCATION</span>
-            <i class="fas fa-plus"></i>
-        </button>
-        <div id="edu" class="content-box">
-            <p style="margin:0; font-weight:700;">Marwadi University, Rajkot</p>
-            <p style="font-size:12px; color:#666; margin-bottom:15px;">B.Tech CSE | 2024-2028</p>
-            <p style="margin:0; font-weight:700;">Manas International School</p>
-            <p style="font-size:12px; color:#666;">Jehanabad, Bihar</p>
+        <div class="card" style="text-align: center;">
+            <h3><i class="fas fa-qrcode"></i> Connect Instantly</h3>
+            <div class="qr-wrapper">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/919263216785" alt="WhatsApp QR">
+            </div>
+            <p style="font-size: 11px; color: #444; margin-top: 10px; font-weight: 600;">
+                SCAN TO MESSAGE ME DIRECTLY
+            </p>
         </div>
 
-        <button class="menu-btn" onclick="toggleSection('contact')">
-            <span><i class="fas fa-comment"></i> QUICK MESSAGE</span>
-            <i class="fas fa-plus"></i>
-        </button>
-        <div id="contact" class="content-box">
-            <a href="https://wa.me/919263216785" target="_blank" style="background:#25D366; color:white; padding:15px; display:block; text-align:center; border-radius:15px; text-decoration:none; font-weight:700;">
-                <i class="fab fa-whatsapp"></i> MESSAGE ON WHATSAPP
-            </a>
+        <div class="social-bar">
+            <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/harshzynx/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
         </div>
 
-        <div class="footer">SYSTEM_CORE: HARSHZYNX | © 2026</div>
+        <footer>
+            Harshzynx Core v5.0 | Built with Passion | © 2026
+        </footer>
     </div>
 
     <script>
-        const slider = document.getElementById('slider');
-        let currentSlide = 0;
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % 5;
-            slider.style.transform = `translateX(-${currentSlide * 20}%)`;
+        // 3. MUSIC PLAY/PAUSE SYSTEM
+        const myAudio = document.getElementById("harshAudio");
+        const btnIcon = document.getElementById("musicToggle");
+        
+        function handleMusic() {
+            if (myAudio.paused) {
+                myAudio.play();
+                btnIcon.className = "fas fa-pause-circle play-btn";
+            } else {
+                myAudio.pause();
+                btnIcon.className = "fas fa-play-circle play-btn";
+            }
         }
-        setInterval(autoSlide, 3000);
 
-        function toggleSection(id) {
-            const sections = document.querySelectorAll('.content-box');
-            sections.forEach(sec => {
-                if(sec.id === id) sec.classList.toggle('active');
-                else sec.classList.remove('active');
+        // 1. SLIDER SYSTEM (5 IMAGES)
+        let currentIdx = 0;
+        const totalImages = 5;
+        setInterval(() => {
+            currentIdx = (currentIdx + 1) % totalImages;
+            document.getElementById('photoTrack').style.transform = `translateX(-${currentIdx * 20}%)`;
+        }, 3500);
+
+        // 6. DYNAMIC RESUME DOWNLOAD
+        function triggerDownload() {
+            const resumeData = `
+            HARSH RAJ - PROFESSIONAL RESUME
+            --------------------------------
+            Role: Full Stack & Python Developer
+            Education: B.Tech CSE, Marwadi University (2024-2028)
+            Skills: Python, C, C++, Java, JavaScript, SEO
+            Projects: Personal Branding, Interactive Portfolios
+            GitHub: github.com/harsh62h
+            Contact: +91 9263216785
+            `;
+            const blobFile = new Blob([resumeData], { type: 'text/plain' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blobFile);
+            downloadLink.download = 'HarshRaj_Harshzynx_Resume.txt';
+            downloadLink.click();
+        }
+
+        // STAR FIELD BACKGROUND ENGINE
+        const starCanvas = document.getElementById('canvas-stars');
+        const starCtx = starCanvas.getContext('2d');
+        let starArray = [];
+
+        function initStars() {
+            starCanvas.width = window.innerWidth;
+            starCanvas.height = window.innerHeight;
+            starArray = [];
+            for(let i=0; i<120; i++) {
+                starArray.push({
+                    x: Math.random() * starCanvas.width,
+                    y: Math.random() * starCanvas.height,
+                    size: Math.random() * 2,
+                    velocity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function animateStars() {
+            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+            starCtx.fillStyle = "rgba(255, 255, 255, 0.8)";
+            starArray.forEach(star => {
+                starCtx.beginPath();
+                starCtx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                starCtx.fill();
+                star.y += star.velocity;
+                if(star.y > starCanvas.height) star.y = 0;
             });
+            requestAnimationFrame(animateStars);
         }
 
-        const canvas = document.getElementById('canvas-stars');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
-        function init() {
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = [];
-            for(let i=0; i<150; i++) stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2, speed: Math.random() * 0.4 });
-        }
-        function animate() {
-            ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "white";
-            stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > canvas.height) s.y = 0; });
-            requestAnimationFrame(animate);
-        }
-        window.addEventListener('resize', init); init(); animate();
+        window.addEventListener('resize', initStars);
+        initStars();
+        animateStars();
     </script>
 </body>
 </html>
