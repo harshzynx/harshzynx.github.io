@@ -12,7 +12,7 @@
     
     <style>
         /* ================================================================
-           1. MASTER SYSTEM VARIABLES & THEME ENGINE (ZERO REMOVAL POLICY)
+           1. MASTER SYSTEM DESIGN VARIABLES (NO DELETION POLICY)
            ================================================================
         */
         :root { 
@@ -43,10 +43,10 @@
             color: var(--main-text-color); 
             text-align: center; 
             overflow-x: hidden; 
-            line-height: 1.9;
+            line-height: 2.0;
         }
 
-        /* Advanced Galactic Starfield Simulation */
+        /* Full-Screen Starfield Engine */
         #canvas-stars { 
             position: fixed; 
             top: 0; 
@@ -66,7 +66,7 @@
         }
 
         /* ================================================================
-           2. FIXED CIRCLE BRANDING (STATIC PROFILE)
+           2. FIXED BRANDING (STATIC CIRCLE PROFILE)
            ================================================================
         */
         .fixed-branding-module { 
@@ -96,7 +96,7 @@
         }
 
         .fixed-profile-frame:hover { 
-            transform: scale(1.15) rotate(3deg); 
+            transform: scale(1.1) rotate(5deg); 
             border-color: var(--secondary-glow);
             box-shadow: 0 0 80px rgba(146, 254, 157, 0.6);
         }
@@ -128,11 +128,10 @@
             margin-top: 15px; 
             font-weight: 700; 
             text-transform: uppercase;
-            opacity: 0.7;
         }
 
         /* ================================================================
-           3. ANALYTICS HUB (CLOCK, VIEWS, LOCATION)
+           3. ANALYTICS HUB (CLOCK, VIEWS, LOCATION, WEATHER)
            ================================================================
         */
         .analytics-hub {
@@ -155,12 +154,17 @@
             align-items: center;
             gap: 16px;
             backdrop-filter: blur(25px);
-            transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.4s ease;
+        }
+
+        .data-pill:hover {
+            border-color: var(--primary-glow);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
         }
 
         /* ================================================================
-           4. GITHUB CONTRIBUTION GRAPH
+           4. CONTRIBUTION ARCHIVE (HARSH RAJ LOGO/GRAPH)
            ================================================================
         */
         .heavy-card { 
@@ -174,18 +178,24 @@
             transition: 0.6s var(--transition-titan);
         }
 
-        .heavy-card:hover { border-color: var(--primary-glow); transform: translateY(-15px); }
-
-        .github-graph-box { text-align: center; margin-top: 20px; }
-        .github-graph-box img { 
+        .github-graph-container { 
+            text-align: center; 
+            background: rgba(0,0,0,0.5); 
+            padding: 30px; 
+            border-radius: 30px; 
+            border: 1px solid var(--primary-glow);
+            margin-top: 20px;
+        }
+        
+        .github-graph-container img { 
             width: 100%; 
-            filter: invert(1) hue-rotate(180deg) brightness(1.3); 
-            border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.1);
+            height: auto;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+            border-radius: 10px;
         }
 
         /* ================================================================
-           5. MUSIC ARCHITECTURE (ARIJIT SINGH SAIYAARA)
+           5. MUSIC ARCHITECTURE (SAIYAARA ARIJIT SINGH)
            ================================================================
         */
         .music-titan-console { 
@@ -202,11 +212,11 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
         }
 
-        .titan-audio-btn { font-size: 55px; color: var(--primary-glow); cursor: pointer; transition: 0.5s; }
-        .titan-audio-btn:hover { transform: scale(1.2); color: #fff; }
+        .audio-btn { font-size: 55px; color: var(--primary-glow); cursor: pointer; transition: 0.5s; }
+        .audio-btn:hover { transform: scale(1.2); color: #fff; }
 
         /* ================================================================
-           6. LINEAR GALLERY SLIDER (BELOW PROFILE)
+           6. LINEAR 4-PHOTO SLIDER (SMOOTH TRANSITION)
            ================================================================
         */
         .pro-slider-viewport { 
@@ -224,13 +234,13 @@
             display: flex; 
             width: 400%; 
             height: 100%; 
-            transition: transform 1.5s cubic-bezier(0.85, 0, 0.15, 1); 
+            transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); 
         }
 
         .pro-slider-track img { width: 25%; height: 100%; object-fit: cover; }
 
         /* ================================================================
-           7. TIMELINE & SKILL ARCHITECTURE
+           7. TIMELINE, SKILLS & RESUME
            ================================================================
         */
         .timeline-entry { border-left: 3px solid var(--primary-glow); padding-left: 40px; margin-bottom: 50px; position: relative; }
@@ -239,6 +249,9 @@
         .skill-node { margin-top: 45px; }
         .skill-bar-outer { background: rgba(255,255,255,0.1); height: 16px; border-radius: 50px; overflow: hidden; margin-top: 15px; }
         .skill-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow)); box-shadow: 0 0 25px var(--primary-glow); transition: 2s; }
+
+        .chip-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .chip { background: var(--primary-glow); color: #000; padding: 12px 25px; border-radius: 15px; font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
 
         /* ================================================================
            8. TRANSMISSION FORM (EMAIL)
@@ -272,13 +285,12 @@
             letter-spacing: 4px;
             transition: 0.6s;
         }
-        .titan-submit:hover { background: #fff; transform: translateY(-10px); }
 
         /* ================================================================
-           9. RESUME, SCANNER & SOCIAL
+           9. RESUME, SCANNER & SOCIAL MATRIX
            ================================================================
         */
-        .resume-giant-btn { background: #fff; color: #000; padding: 35px; border-radius: 100px; width: 100%; font-weight: 900; font-size: 22px; cursor: pointer; transition: 0.6s; margin-top: 50px; }
+        .resume-giant-btn { background: #fff; color: #000; padding: 35px; border-radius: 100px; width: 100%; font-weight: 900; font-size: 22px; cursor: pointer; transition: 0.6s; margin-top: 50px; text-decoration: none; display: block; text-align: center; }
         .resume-giant-btn:hover { background: var(--primary-glow); color: #fff; transform: translateY(-15px); }
 
         .qr-titan-box { background: white; padding: 45px; border-radius: 60px; display: inline-block; margin: 50px 0; box-shadow: 0 40px 100px rgba(0,0,0,0.9); }
@@ -312,35 +324,37 @@
         
         <header class="fixed-branding-module">
             <div class="fixed-profile-frame">
-                <img src="profile.jpg" alt="Harsh Raj Fixed Avatar">
+                <img src="profile.jpg" alt="Harsh Raj Master Profile">
             </div>
             <h1 class="titan-h1">Harsh <span style="color:var(--primary-glow)">Raj</span></h1>
-            <div class="titan-tagline">HARSHZYNX | TITAN LEVEL DEVELOPER</div>
+            <div class="titan-tagline">HARSHZYNX | ELITE TITAN NODE</div>
         </header>
 
         <div class="analytics-hub">
-            <div class="data-pill"><i class="fas fa-fingerprint"></i> <span id="viewMetric">0</span> SESSIONS</div>
-            <div class="data-pill"><i class="fas fa-microchip"></i> <span id="clockMetric">--:--:--</span> IST</div>
-            <div class="data-pill"><i class="fas fa-location-arrow"></i> RAJKOT, GUJARAT</div>
+            <div class="data-pill"><i class="fas fa-fingerprint"></i> <span id="telemetryViews">0</span> SESSIONS</div>
+            <div class="data-pill"><i class="fas fa-microchip"></i> <span id="globalClock">--:--:--</span> IST</div>
+            <div class="data-pill"><i class="fas fa-location-arrow"></i> RAJKOT, GJ</div>
+            <div class="data-pill"><i class="fas fa-cloud-sun"></i> RAJKOT: 28°C</div>
         </div>
 
         <div class="heavy-card">
             <h3><i class="fab fa-github"></i> CONTRIBUTION ARCHIVE</h3>
-            <div class="github-graph-box">
-                <img src="https://ghchart.rshah.org/00d2ff/harsh62h" alt="Harsh Raj GitHub Log">
+            <p style="color: #666; margin-bottom: 25px;">HARSH RAJ CODE ANALYTICS STREAM</p>
+            <div class="github-graph-container">
+                <img src="https://ghchart.rshah.org/00d2ff/harsh62h" alt="Harsh Raj GitHub Coding Activity Graph">
             </div>
-            <p style="color:#555; font-size:12px; margin-top:20px; text-align:center;">REAL-TIME DATA FROM GITHUB.COM/HARSH62H</p>
+            <p style="font-size: 10px; color: #333; margin-top: 15px; text-align: center;">ID: HARSH62H | MASTER REPOSITORY SYNC</p>
         </div>
 
         <div class="music-titan-console">
             <div style="text-align:left;">
                 <b style="font-size: 16px;">SAIYAARA (ARIJIT SINGH LOFI)</b>
-                <p style="font-size: 11px; color: var(--primary-glow); font-weight: 800; margin-top:5px;">ARIJIT SINGH x HARSHZYNX SYNC</p>
+                <p style="font-size: 11px; color: var(--primary-glow); font-weight: 800;">ARIJIT SINGH x HARSHZYNX SYNC</p>
             </div>
-            <i class="fas fa-play-circle titan-audio-btn" id="audioMasterBtn" onclick="handlePlayback()"></i>
+            <i class="fas fa-play-circle audio-btn" id="audioSwitch" onclick="triggerAudioStream()"></i>
         </div>
 
-        <div style="font-size:14px; letter-spacing:10px; color:#333; margin-bottom: 30px; font-weight:900;">GALLERY STREAM</div>
+        <div style="font-size:14px; letter-spacing:10px; color:#333; margin-bottom: 30px; font-weight:900;">GALLERY DATA STREAM</div>
         <div class="pro-slider-viewport">
             <div class="pro-slider-track" id="mainLinearTrack">
                 <img src="photo1.jpg" alt="Data 01"><img src="photo2.jpg" alt="Data 02"><img src="Photo3.jpg" alt="Data 03"><img src="photo4 (1).jpg" alt="Data 04">
@@ -348,35 +362,38 @@
         </div>
 
         <div class="heavy-card">
-            <h3><i class="fas fa-history"></i> EDUCATION TIMELINE</h3>
+            <h3><i class="fas fa-history"></i> JOURNEY LOG</h3>
             <div class="timeline-entry">
                 <h4 style="color: #fff; font-size:20px;">Marwadi University, Rajkot</h4>
                 <p style="color: var(--primary-glow); font-weight:800; margin-top:5px;">B.Tech Computer Science (2024-2028)</p>
             </div>
             <div class="timeline-entry">
                 <h4 style="color: #fff; font-size:20px;">Manas International School</h4>
-                <p style="color: var(--primary-glow); font-weight:800; margin-top:5px;">Graduated from Bihar</p>
+                <p style="color: var(--primary-glow); font-weight:800; margin-top:5px;">High School Graduation</p>
             </div>
         </div>
 
         <div class="heavy-card">
-            <h3><i class="fas fa-terminal"></i> TECHNICAL INFRASTRUCTURE</h3>
+            <h3><i class="fas fa-terminal"></i> TECHNICAL CORE</h3>
             <div class="skill-node">
                 <div style="display:flex; justify-content:space-between; font-weight:800;"><span>PYTHON & AUTOMATION</span><span>95%</span></div>
                 <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 95%;"></div></div>
             </div>
             <div class="skill-node">
-                <div style="display:flex; justify-content:space-between; font-weight:800;"><span>JAVA & C++ CORE</span><span>88%</span></div>
+                <div style="display:flex; justify-content:space-between; font-weight:800;"><span>JAVA & C++ ARCHITECTURE</span><span>88%</span></div>
                 <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 88%;"></div></div>
             </div>
-            <button onclick="exportTitanResume()" class="resume-giant-btn">EXPORT PROFESSIONAL RESUME (PDF)</button>
+            <div class="chip-container">
+                <div class="chip">PYTHON</div><div class="chip">JAVA</div><div class="chip">C++</div><div class="chip">C LANGUAGE</div><div class="chip">SEO CORE</div>
+            </div>
+            <button onclick="initiateResumeExport()" class="resume-giant-btn">EXPORT PROFESSIONAL RESUME (PDF)</button>
         </div>
 
         <div class="heavy-card">
             <h3><i class="fas fa-satellite-dish"></i> ENCRYPTED MAILBOX</h3>
             <form action="https://formspree.io/f/xyzkpvlp" method="POST" class="titan-form">
-                <input type="text" name="name" class="titan-input" placeholder="Your Name" required>
-                <input type="email" name="email" class="titan-input" placeholder="Your Email" required>
+                <input type="text" name="name" class="titan-input" placeholder="Your Identity (Name)" required>
+                <input type="email" name="email" class="titan-input" placeholder="Return Address (Email)" required>
                 <textarea name="msg" class="titan-input" rows="8" placeholder="Transmission for harshsharma18089@gmail.com..." required></textarea>
                 <button type="submit" class="titan-submit">EXECUTE DATA TRANSMISSION</button>
             </form>
@@ -385,7 +402,7 @@
         <div class="heavy-card" style="text-align: center;">
             <h3><i class="fas fa-qrcode"></i> INSTANT INTERFACE</h3>
             <div class="qr-titan-box">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/919263216785" alt="Harsh Raj WhatsApp QR">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/919263216785" alt="WhatsApp Matrix QR">
             </div>
             <p style="font-size: 15px; color: #444; font-weight: 900; letter-spacing: 5px; margin-top:20px;">SCAN FOR WHATSAPP</p>
         </div>
@@ -397,52 +414,56 @@
             <a href="https://github.com/harsh62h" target="_blank" title="GitHub Node"><i class="fab fa-github"></i></a>
         </div>
 
-        <footer>HARSHZYNX CORE TITAN v32.0 | © 2026</footer>
+        <footer>HARSHZYNX CORE TITAN v60.0 | © 2026</footer>
     </div>
 
     <script>
-        function updateClock() {
-            const timeStr = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false });
-            document.getElementById('clockMetric').innerText = timeStr;
+        function synchronizeClock() {
+            const dateObj = new Date();
+            const formatConfig = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('globalClock').innerText = dateObj.toLocaleTimeString('en-IN', formatConfig);
         }
-        setInterval(updateClock, 1000); updateClock();
+        setInterval(synchronizeClock, 1000); synchronizeClock();
 
-        const audio = document.getElementById("harshTitanAudio");
-        const playBtn = document.getElementById("audioMasterBtn");
-        function handlePlayback() {
-            if (audio.paused) { audio.play(); playBtn.className = "fas fa-pause-circle titan-audio-btn"; }
-            else { audio.pause(); playBtn.className = "fas fa-play-circle titan-audio-btn"; }
-        }
-
-        let slidePtr = 0;
-        setInterval(() => { slidePtr = (slidePtr + 1) % 4; document.getElementById('mainLinearTrack').style.transform = `translateX(-${slidePtr * 25}%)`; }, 6000);
-
-        let sessions = localStorage.getItem('hv_titan') || 0;
-        sessions++; localStorage.setItem('hv_titan', sessions);
-        document.getElementById('viewMetric').innerText = sessions;
-
-        function exportTitanResume() {
-            const resumeContent = "HARSH RAJ - TITAN RESUME\nFull-Stack Developer | Python Engineer\nUniversity: Marwadi University, Rajkot (2024-2028)\nContact: 9263216785\nEmail: harshsharma18089@gmail.com";
-            const blob = new Blob([resumeContent], { type: 'text/plain' });
-            const exporter = document.createElement('a');
-            exporter.href = window.URL.createObjectURL(blob);
-            exporter.download = 'HarshRaj_Titan_Resume.txt'; exporter.click();
+        const globalPlayer = document.getElementById("harshTitanAudio");
+        const switchBtn = document.getElementById("audioSwitch");
+        function triggerAudioStream() {
+            if (globalPlayer.paused) { globalPlayer.play(); switchBtn.className = "fas fa-pause-circle audio-btn"; }
+            else { globalPlayer.pause(); switchBtn.className = "fas fa-play-circle audio-btn"; }
         }
 
-        const sCanvas = document.getElementById('canvas-stars');
-        const sCtx = sCanvas.getContext('2d');
-        let starSet = [];
-        function buildUniverse() {
-            sCanvas.width = window.innerWidth; sCanvas.height = window.innerHeight;
-            starSet = []; for(let i=0; i<200; i++) { starSet.push({ x: Math.random()*sCanvas.width, y: Math.random()*sCanvas.height, r: Math.random()*2.8, v: Math.random()*0.4 }); }
+        let framePtr = 0;
+        setInterval(() => { 
+            framePtr = (framePtr + 1) % 4; 
+            document.getElementById('mainLinearTrack').style.transform = `translateX(-${framePtr * 25}%)`; 
+        }, 3500);
+
+        let telemetry = localStorage.getItem('harshSystemTelemetry') || 0;
+        telemetry++; localStorage.setItem('harshSystemTelemetry', telemetry);
+        document.getElementById('telemetryViews').innerText = telemetry;
+
+        function initiateResumeExport() {
+            const resumeTemplate = "HARSH RAJ - ELITE RESUME\nB.Tech CSE, Marwadi University (2024-2028)\nSkills: Python, Java, C++, SEO Core\nContact: 9263216785\nEmail: harshsharma18089@gmail.com";
+            const resumeBlob = new Blob([resumeTemplate], { type: 'text/plain' });
+            const downloaderNode = document.createElement('a');
+            downloaderNode.href = window.URL.createObjectURL(resumeBlob);
+            downloaderNode.download = 'HarshRaj_Resume_2026.txt'; downloaderNode.click();
+        }
+
+        const starCanvasNode = document.getElementById('canvas-stars');
+        const starCtxNode = starCanvasNode.getContext('2d');
+        let starPoolNode = [];
+        function initializeUniverse() {
+            starCanvasNode.width = window.innerWidth; starCanvasNode.height = window.innerHeight;
+            starPoolNode = []; for(let q=0; q<180; q++) { starPoolNode.push({ xPos: Math.random() * starCanvasNode.width, yPos: Math.random() * starCanvasNode.height, radiusSize: Math.random() * 2.5, fallSpeed: Math.random() * 0.45 + 0.1 }); }
         }
         function renderUniverse() {
-            sCtx.clearRect(0,0,sCanvas.width,sCanvas.height); sCtx.fillStyle="white";
-            starSet.forEach(s => { sCtx.beginPath(); sCtx.arc(s.x, s.y, s.r, 0, Math.PI*2); sCtx.fill(); s.y += s.v; if(s.y > sCanvas.height) s.y=0; });
+            starCtxNode.clearRect(0, 0, starCanvasNode.width, starCanvasNode.height);
+            starCtxNode.fillStyle = "rgba(255, 255, 255, 0.9)";
+            starPoolNode.forEach(starNode => { starCtxNode.beginPath(); starCtxNode.arc(starNode.xPos, starNode.yPos, starNode.radiusSize, 0, Math.PI * 2); starCtxNode.fill(); starNode.yPos += starNode.fallSpeed; if(starNode.yPos > starCanvasNode.height) starNode.yPos = 0; });
             requestAnimationFrame(renderUniverse);
         }
-        window.addEventListener('resize', buildUniverse); buildUniverse(); renderUniverse();
+        window.addEventListener('resize', initializeUniverse); initializeUniverse(); renderUniverse();
     </script>
 </body>
 </html>
-
