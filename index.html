@@ -3,84 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Raj | Harshzynx</title>
+    <title>Harsh Raj | Harshzynx Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: #050505; color: white; overflow-x: hidden; }
-        #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #050505; }
-        .container { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #111 0%, #050505 100%); }
+        .container { max-width: 600px; margin: 0 auto; padding: 50px 20px; text-align: center; position: relative; z-index: 1; }
 
-        /* PROFILE IMAGE */
-        .profile-img {
-            width: 150px; height: 150px; border-radius: 50%;
-            border: 4px solid #00d2ff; margin-bottom: 20px;
-            object-fit: cover; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
-            animation: fadeIn 1.5s ease;
-        }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #00d2ff; margin-bottom: 20px; object-fit: cover; box-shadow: 0 0 30px rgba(0, 210, 255, 0.4); animation: bounceIn 1.5s ease; }
+        @keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
         h1 { font-size: 2.8rem; margin: 0; background: linear-gradient(to right, #00d2ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .typing-box { font-size: 1.1rem; color: #888; height: 30px; margin-top: 5px; }
         #typing-text { color: #00d2ff; font-weight: 600; }
 
-        .resume-btn {
-            display: flex; align-items: center; justify-content: center; gap: 12px;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-            color: white; text-decoration: none; padding: 16px; border-radius: 50px;
-            font-weight: 700; margin: 30px 0; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,210,255,0.3);
-        }
-        .resume-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,210,255,0.5); }
+        /* Visitor Counter Badge */
+        .visitor-badge { background: rgba(0, 210, 255, 0.1); padding: 5px 15px; border-radius: 50px; font-size: 12px; color: #00d2ff; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(0, 210, 255, 0.2); }
 
-        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 25px; margin-bottom: 25px; text-align: left; }
-        h2 { font-size: 1rem; color: #00d2ff; text-transform: uppercase; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .action-btns { display: flex; gap: 12px; margin: 25px 0; }
+        .resume-btn { flex: 2; display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #00d2ff, #3a7bd5); color: white; text-decoration: none; padding: 16px; border-radius: 50px; font-weight: 700; transition: 0.3s; border: none; cursor: pointer; }
+        .wa-btn { flex: 1; display: flex; align-items: center; justify-content: center; background: #25D366; color: white; text-decoration: none; padding: 16px; border-radius: 50px; font-size: 20px; transition: 0.3s; }
 
-        .skill-tag { background: rgba(0, 210, 255, 0.1); padding: 5px 12px; border-radius: 8px; font-size: 12px; border: 1px solid rgba(0, 210, 255, 0.2); margin: 4px; display: inline-block; }
+        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 28px; padding: 25px; margin-bottom: 25px; text-align: left; }
+        h2 { font-size: 0.9rem; color: #00d2ff; text-transform: uppercase; letter-spacing: 2px; margin-top: 0; display: flex; align-items: center; gap: 10px; }
 
-        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .btn { text-decoration: none; color: #fff; padding: 12px; border-radius: 15px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .btn:hover { background: #fff; color: #000; }
+        .edu-item { margin-bottom: 15px; border-left: 2px solid #333; padding-left: 15px; }
+        .edu-item h4 { margin: 0; font-size: 15px; color: #fff; }
+        .edu-item p { margin: 3px 0; font-size: 12px; color: #888; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .skill-tag { background: rgba(0, 210, 255, 0.1); padding: 6px 14px; border-radius: 10px; font-size: 11px; border: 1px solid rgba(0, 210, 255, 0.2); margin: 4px; display: inline-block; font-weight: 600; }
+
+        .qr-code { background: white; padding: 8px; border-radius: 12px; display: inline-block; margin-top: 10px; }
+
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .btn { text-decoration: none; color: #eee; padding: 14px; border-radius: 18px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); font-size: 13px; font-weight: 600; }
+        .btn:hover { background: #fff; color: #000; transform: translateY(-3px); }
+
+        .footer { text-align: center; margin-top: 50px; font-size: 11px; color: #444; letter-spacing: 1px; }
     </style>
 </head>
 <body>
     <canvas id="canvas-stars"></canvas>
     <div class="container">
+        <div class="visitor-badge"><i class="fas fa-eye"></i> Professional Profile Active</div>
+
         <img src="profile.jpg" alt="Harsh Raj" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Harsh+Raj&background=00d2ff&color=fff'">
+        
         <h1>Harsh Raj</h1>
         <div class="typing-box"><span id="typing-text"></span></div>
 
-        <a href="javascript:void(0);" onclick="alert('HARSH RAJ\nB.Tech 2024-2028\nMarwadi University\nRajkot, Gujarat\n\nFull Stack Developer & Tech Enthusiast')" class="resume-btn">
-            <i class="fas fa-id-card"></i> QUICK RESUME
-        </a>
-
-        <div class="card">
-            <h2><i class="fas fa-university"></i> Education</h2>
-            <p style="margin:5px 0; font-weight:600;">Marwadi University, Rajkot</p>
-            <p style="margin:0; font-size:14px; color:#aaa;">Bachelor of Technology | 2024 - 2028</p>
+        <div class="action-btns">
+            <button onclick="downloadResume()" class="resume-btn">
+                <i class="fas fa-file-pdf"></i> DOWNLOAD RESUME
+            </button>
+            <a href="https://wa.me/919263216785" class="wa-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
         </div>
 
         <div class="card">
-            <h2><i class="fas fa-code"></i> My Tech Stack</h2>
-            <div class="skill-tag">Python</div> <div class="skill-tag">JavaScript</div> <div class="skill-tag">Web Design</div> <div class="skill-tag">GitHub</div> <div class="skill-tag">Branding</div>
+            <h2><i class="fas fa-bullseye"></i> Goal</h2>
+            <p style="font-size: 13px; color: #bbb; margin: 5px 0 0;">Currently mastering <b>Full Stack Development</b> and exploring AI at <b>Marwadi University</b>. Building digital solutions for the future.</p>
         </div>
 
         <div class="card">
-            <h2><i class="fas fa-globe"></i> Connect</h2>
-            <div class="social-grid">
-                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" class="btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://www.instagram.com/harshzynx" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://www.facebook.com/profile.php?id=100076241908092" class="btn" target="_blank"><i class="fab fa-facebook"></i> FB</a>
-                <a href="https://x.com/harshzynx" class="btn" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="edu-item">
+                <h4>Marwadi University, Rajkot</h4>
+                <p>Bachelor of Technology (CSE) | 2024 - 2028</p>
+            </div>
+            <div class="edu-item">
+                <h4>Manas International Public School</h4>
+                <p>10th & 12th Board | Jehanabad, Bihar</p>
             </div>
         </div>
-        <p style="font-size:10px; color:#555;">© 2026 Harshzynx Digital | Built with ❤️ from Rajkot</p>
+
+        <div class="card">
+            <h2><i class="fas fa-code"></i> Tech Stack</h2>
+            <div class="skill-tag">Python</div> <div class="skill-tag">Web Dev</div> <div class="skill-tag">GitHub</div> <div class="skill-tag">SEO</div> <div class="skill-tag">UI/UX</div>
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <h2><i class="fas fa-qrcode"></i> Scan to Share</h2>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://harshzynx.github.io" alt="Portfolio QR">
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-share-nodes"></i> Digital Presence</h2>
+            <div class="social-grid">
+                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" class="btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/harshzynx" class="btn" target="_blank"><i class="fab fa-instagram"></i> Insta</a>
+                <a href="https://www.facebook.com/profile.php?id=100076241908092" class="btn" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://x.com/harshzynx" class="btn" target="_blank"><i class="fab fa-x-twitter"></i> Twitter</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 HARSHZYNX | MADE IN RAJKOT, GUJARAT
+        </div>
     </div>
 
     <script>
+        function downloadResume() {
+            const doc = `HARSH RAJ (HARSHZYNX)\n------------------------------------------\nUNIVERSITY: Marwadi University, Rajkot (2024-2028)\nSCHOOLING: Manas International Public School, Jehanabad\nSKILLS: Full Stack Developer, Python, GitHub\nWHATSAPP: +91 9263216785`;
+            const blob = new Blob([doc], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Harsh_Raj_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
         const textElement = document.getElementById("typing-text");
-        const phrases = ["Full Stack Developer", "Student @ Marwadi University", "Tech Enthusiast"];
+        const phrases = ["Full Stack Developer", "Student @ MU Rajkot", "Brand Harshzynx"];
         let pIdx=0, cIdx=0, isDel=false;
         function type() {
             const current = phrases[pIdx];
@@ -91,9 +132,10 @@
             else if(isDel && cIdx === 0) { isDel=false; pIdx=(pIdx+1)%phrases.length; speed=500; }
             setTimeout(type, speed);
         }
+
         const canvas=document.getElementById('canvas-stars'); const ctx=canvas.getContext('2d'); let stars=[];
-        function init(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; stars=[]; for(let i=0;i<100;i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5, v:Math.random()*0.5}); }
-        function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="white"; stars.forEach(s=>{ ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); s.y+=s.v; if(s.y>canvas.height)s.y=0; }); requestAnimationFrame(draw); }
+        function init(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; stars=[]; for(let i=0;i<100;i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5, v:Math.random()*0.4}); }
+        function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="rgba(255,255,255,0.8)"; stars.forEach(s=>{ ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); s.y+=s.v; if(s.y>canvas.height)s.y=0; }); requestAnimationFrame(draw); }
         window.addEventListener('resize', init); init(); draw(); type();
     </script>
 </body>
