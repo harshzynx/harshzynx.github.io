@@ -6,7 +6,7 @@
     
     <meta name="google-site-verification" content="MzRa-c-0qGRbnGtsAU_ETOSU_B0p7kaao4oCHIv3Ibc" />
 
-    <meta name="description" content="Official Portfolio of Harsh Raj. B.Tech Computer Science Scholar at Marwadi University. Alumni: Manas International School, Bihar.">
+    <meta name="description" content="Official Portfolio of Harsh Raj. B.Tech Computer Science Scholar at Marwadi University.">
     <title>Harsh Raj — Full Stack Engineer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,131 +29,120 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: background var(--transition); }
         .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
 
-        /* THEME TOGGLE */
-        .mode-toggle-wrap { display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 40px; }
-        .theme-switch { background: var(--card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 100px; cursor: pointer; color: var(--text-main); font-weight: 600; display: flex; align-items: center; gap: 8px; }
-
-        /* HERO SECTION */
+        /* HERO & SOCIAL ICONS */
         .hero { margin-bottom: 80px; }
         .hero-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -3px; margin-bottom: 25px; }
         
-        /* GALLERY TRIGGER BUTTON */
-        .gallery-trigger {
-            background: var(--card); border: 1px solid var(--accent); color: var(--accent);
-            padding: 15px 30px; border-radius: 15px; cursor: pointer; display: inline-flex;
-            align-items: center; gap: 12px; font-weight: 700; transition: 0.3s; margin-top: 20px;
-        }
-        .gallery-trigger:hover { background: var(--accent); color: white; transform: scale(1.05); }
+        .social-links-bar { display: flex; gap: 20px; margin: 30px 0; font-size: 24px; }
+        .social-links-bar a { color: var(--text-dim); transition: 0.3s; text-decoration: none; }
+        .social-links-bar a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* HIDDEN GALLERY MODAL */
-        #galleryOverlay {
+        /* GALLERY TRIGGER BUTTON */
+        .gallery-btn {
+            background: var(--card); border: 1px solid var(--border); color: var(--text-main);
+            padding: 12px 24px; border-radius: 12px; cursor: pointer; display: inline-flex;
+            align-items: center; gap: 10px; font-weight: 600; transition: 0.3s;
+        }
+        .gallery-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* MODAL OVERLAY */
+        #photoVault {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 2000; display: none;
+            background: rgba(0,0,0,0.97); z-index: 2000; display: none;
             flex-direction: column; align-items: center; justify-content: center;
         }
-        .close-gallery { position: absolute; top: 30px; right: 30px; font-size: 30px; color: white; cursor: pointer; }
-        .slider-viewport { width: 85%; max-width: 900px; height: 500px; border-radius: 20px; overflow: hidden; position: relative; border: 2px solid var(--accent); }
-        .slider-track { display: flex; width: 400%; height: 100%; transition: transform 0.8s ease-in-out; }
-        .slider-track img { width: 25%; height: 100%; object-fit: cover; }
+        .close-vault { position: absolute; top: 30px; right: 30px; font-size: 35px; color: white; cursor: pointer; }
+        .slider { width: 90%; max-width: 850px; height: 480px; border-radius: 25px; overflow: hidden; border: 2px solid var(--accent); }
+        .track { display: flex; width: 400%; height: 100%; transition: 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
+        .track img { width: 25%; height: 100%; object-fit: cover; }
 
         /* CARDS & EDUCATION */
-        .section-label { font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transform: uppercase; font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; display: block; }
         .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; }
-        .edu-box { margin-bottom: 32px; padding-left: 24px; border-left: 2px solid var(--accent); position: relative; }
+        .edu-item { margin-bottom: 30px; padding-left: 20px; border-left: 2px solid var(--accent); }
 
-        /* WHATSAPP BUTTON */
-        .wa-btn { background: #25d366; color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; }
+        /* BUTTONS */
+        .wa-pill { background: #25d366; color: white; padding: 14px 28px; border-radius: 100px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; box-shadow: 0 10px 20px rgba(37,211,102,0.2); }
 
-        footer { padding: 60px 0; border-top: 1px solid var(--border); color: var(--text-dim); }
+        footer { padding: 40px 0; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border); }
     </style>
 </head>
 <body data-theme="dark">
 
-    <div id="galleryOverlay">
-        <span class="close-gallery" onclick="hideGallery()">&times; Close</span>
-        <div class="slider-viewport">
-            <div class="slider-track" id="trackEngine">
+    <div id="photoVault">
+        <span class="close-vault" onclick="closeVault()">&times;</span>
+        <div class="slider">
+            <div class="track" id="sliderTrack">
                 <img src="photo1.jpg" alt="P1"><img src="photo2.jpg" alt="P2"><img src="Photo3.jpg" alt="P3"><img src="photo4 (1).jpg" alt="P4">
             </div>
         </div>
-        <p style="color: white; margin-top: 20px; font-weight: 600;">Swipe Auto-Enabled</p>
     </div>
 
     <div class="container">
-        <div class="mode-toggle-wrap">
-            <button class="theme-switch" onclick="toggleMode()">
-                <i class="fas fa-moon"></i> <span>Night Mode</span>
-            </button>
-        </div>
-
+        
         <section class="hero">
-            <div style="color:var(--accent); font-weight:800; font-size:12px; letter-spacing:2px; margin-bottom:15px; text-transform:uppercase;"><i class="fas fa-check-circle"></i> Google Verified Node</div>
+            <div style="color:var(--accent); font-weight:800; font-size:12px; letter-spacing:2px; margin-bottom:15px; text-transform:uppercase;">
+                <i class="fas fa-certificate"></i> Google Verified Engineer
+            </div>
             <h1 class="hero-name">Harsh<br>Raj.</h1>
-            <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 550px;">
-                B.Tech CSE Scholar at Marwadi University. Python Specialist & Tech Architect.
+            <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 500px;">
+                B.Tech Computer Science Scholar at Marwadi University. Crafting modern Python architectures and technical systems.
             </p>
-            
-            <button class="gallery-trigger" onclick="showGallery()">
-                <i class="fas fa-images"></i> Open Visual Gallery
-            </button>
 
-            <br>
-            <a href="https://wa.me/919263216785" class="wa-btn">
-                <i class="fab fa-whatsapp"></i> WhatsApp Chat
-            </a>
+            <div class="social-links-bar">
+                <a href="https://github.com/harsh62h" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/harshzynx" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/harshzynx/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/your-profile" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                <button class="gallery-btn" onclick="openVault()">
+                    <i class="fas fa-camera-retro"></i> Gallery Vault
+                </button>
+                <a href="https://wa.me/919263216785" class="wa-pill">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
         </section>
 
-        <section id="journey">
-            <span class="section-label">// Archive</span>
-            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Academic Journey</h2>
+        <section id="edu">
+            <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-family: 'Plus Jakarta Sans';">Journey Archive</h2>
             <div class="card">
-                <div class="edu-box">
-                    <div style="font-weight: 800; font-size: 1.2rem;">Marwadi University, Rajkot</div>
-                    <div style="color:var(--text-dim); font-size:14px;">B.Tech Computer Science (2024-2028)</div>
+                <div class="edu-item">
+                    <div style="font-weight: 800; font-size: 1.1rem;">Marwadi University, Rajkot</div>
+                    <div style="color:var(--text-dim); font-size:14px;">B.Tech CSE • 2024 — 2028</div>
                 </div>
-                <div class="edu-box">
-                    <div style="font-weight: 800; font-size: 1.2rem;">Manas International School, Bihar</div>
-                    <div style="color:var(--text-dim); font-size:14px;">12th Grade Intermediate</div>
+                <div class="edu-item">
+                    <div style="font-weight: 800; font-size: 1.1rem;">Manas International School, Bihar</div>
+                    <div style="color:var(--text-dim); font-size:14px;">12th Grade (Intermediate)</div>
                 </div>
-                <div class="edu-box">
-                    <div style="font-weight: 800; font-size: 1.2rem;">Manas International School, Jehanabad</div>
-                    <div style="color:var(--text-dim); font-size:14px;">10th Grade Matriculation</div>
+                <div class="edu-item">
+                    <div style="font-weight: 800; font-size: 1.1rem;">Manas International School, Jehanabad</div>
+                    <div style="color:var(--text-dim); font-size:14px;">10th Grade (Matriculation)</div>
                 </div>
             </div>
         </section>
 
-        <section id="github">
-            <span class="section-label">// Stats</span>
-            <div class="card">
-                <img src="https://ghchart.rshah.org/3b82f6/harsh62h" alt="GitHub" style="width: 100%;">
+        <section id="stats">
+            <div class="card" style="padding: 20px;">
+                <img src="https://ghchart.rshah.org/3b82f6/harsh62h" alt="GitHub Graph" style="width: 100%;">
             </div>
         </section>
 
         <footer>
-            © 2026 Harsh Raj | <a href="https://github.com/harsh62h" style="color:inherit;"><i class="fab fa-github"></i></a>
+            © 2026 Harsh Raj | Built with Modernist Design
         </footer>
     </div>
 
     <script>
-        // GALLERY LOGIC
-        function showGallery() { document.getElementById('galleryOverlay').style.display = 'flex'; }
-        function hideGallery() { document.getElementById('galleryOverlay').style.display = 'none'; }
-
-        // THEME LOGIC
-        function toggleMode() {
-            const body = document.body;
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
-        }
-
-        // SLIDER LOGIC
+        function openVault() { document.getElementById('photoVault').style.display = 'flex'; }
+        function closeVault() { document.getElementById('photoVault').style.display = 'none'; }
+        
         let ptr = 0;
         setInterval(() => { 
             ptr = (ptr + 1) % 4; 
-            document.getElementById('trackEngine').style.transform = `translateX(-${ptr * 25}%)`; 
+            document.getElementById('sliderTrack').style.transform = `translateX(-${ptr * 25}%)`; 
         }, 3000);
     </script>
 </body>
