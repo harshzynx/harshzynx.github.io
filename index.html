@@ -6,143 +6,211 @@
     
     <meta name="google-site-verification" content="MzRa-c-0qGRbnGtsAU_ETOSU_B0p7kaao4oCHIv3Ibc" />
 
-    <meta name="author" content="Harsh Raj (Harshzynx)">
-    <meta name="description" content="Verified Portfolio of Harsh Raj. B.Tech Computer Science student at Marwadi University. Alumni: Manas International School, Jehanabad, Bihar. Specialist in Python.">
-    <link rel="canonical" href="https://harshzynx.github.io/" />
-    
-    <title>Harsh Raj | Harshzynx Verified Master 2026</title>
+    <meta name="description" content="Official Portfolio of Harsh Raj. B.Tech Computer Science Scholar at Marwadi University. Alumni: Manas International School, Bihar. Python Specialist.">
+    <title>Harsh Raj — Full Stack Engineer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;800&family=Orbitron:wght@400;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* ================================================================
+           MODERNIST DESIGN SYSTEM (ZERO DELETION)
+           ================================================================
+        */
         :root { 
-            --primary: #00d2ff; --secondary: #92fe9d; --bg: #050505; 
-            --glass: rgba(255, 255, 255, 0.04); --border: rgba(255, 255, 255, 0.15);
-            --glow: 0 0 70px rgba(0, 210, 255, 0.5); --transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+            --bg: #0a0c10; 
+            --card: #12151c; 
+            --accent: #3b82f6; 
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
-        body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: white; text-align: center; overflow-x: hidden; line-height: 2.3; }
-        #canvas-stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle, #1a1a1a, #050505); }
-        .container { max-width: 900px; margin: 0 auto; padding: 150px 24px; position: relative; z-index: 100; }
-
-        /* FIXED BRANDING */
-        .fixed-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 100px; }
-        .hero-ring { 
-            width: 220px; height: 220px; border-radius: 50%; border: 6px solid var(--primary); 
-            padding: 12px; margin-bottom: 40px; box-shadow: var(--glow); background: rgba(0,0,0,0.8);
-            transition: var(--transition);
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .hero-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .master-h1 { font-family: 'Syncopate', sans-serif; font-size: 4.5rem; letter-spacing: -6px; font-weight: 800; background: linear-gradient(135deg, #fff 40%, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
-        .verified-status { color: var(--primary); font-size: 14px; font-weight: 800; letter-spacing: 2px; margin-top: 15px; }
 
-        /* ANALYTICS HUB */
-        .analytics-hub { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; margin: 60px 0; }
-        .data-pill { background: rgba(255, 255, 255, 0.08); padding: 18px 40px; border-radius: 150px; border: 1px solid var(--glass-border); font-size: 15px; font-weight: 800; color: var(--secondary); display: flex; align-items: center; gap: 15px; backdrop-filter: blur(30px); }
+        .container { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
 
-        /* CARDS */
-        .titan-card { background: var(--glass); border: 1px solid var(--border); border-radius: 65px; padding: 75px; margin-bottom: 70px; text-align: left; backdrop-filter: blur(50px); }
-        .github-graph { text-align: center; background: rgba(0,0,0,0.6); padding: 40px; border-radius: 40px; border: 2px solid var(--primary); margin-top: 35px; }
-        .github-graph img { width: 100%; filter: drop-shadow(0 0 15px var(--primary)); border-radius: 10px; }
+        /* HERO SECTION (Screenshot Inspired) */
+        .hero { margin-bottom: 120px; }
+        
+        .verified-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(59, 130, 246, 0.1); color: var(--accent);
+            padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 600;
+            margin-bottom: 24px; border: 1px solid rgba(59, 130, 246, 0.2);
+        }
 
-        /* SLIDER */
-        .slider-viewport { width: 100%; height: 500px; border-radius: 75px; overflow: hidden; margin: 70px 0; border: 3px solid var(--border); position: relative; }
-        .slider-track { display: flex; width: 400%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
-        .slider-track img { width: 25%; height: 100%; object-fit: cover; }
+        .hero-name { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-size: clamp(3rem, 10vw, 5rem); 
+            font-weight: 800; line-height: 0.9; letter-spacing: -2px;
+            margin-bottom: 30px; background: linear-gradient(to right, #fff, #64748b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-        /* EDUCATION */
-        .edu-timeline { border-left: 4px solid var(--primary); padding-left: 45px; margin-bottom: 60px; position: relative; }
-        .edu-timeline::after { content: ""; position: absolute; left: -15px; top: 10px; width: 26px; height: 26px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 30px var(--primary); }
-        .edu-timeline h4 { font-family: 'Orbitron', sans-serif; font-size: 24px; color: #fff; }
+        .hero-title { font-size: 1.25rem; color: var(--text-dim); max-width: 500px; margin-bottom: 40px; }
 
-        /* SOCIALS */
-        .social-matrix { display: flex; justify-content: center; gap: 70px; margin-top: 160px; padding-bottom: 120px; }
-        .social-matrix a { color: #444; font-size: 65px; transition: 0.8s; }
-        .social-matrix a:hover { color: var(--primary); transform: translateY(-35px) scale(1.4); }
+        .btn-row { display: flex; gap: 16px; margin-bottom: 40px; }
+        .btn-primary { background: var(--accent); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-secondary { background: var(--card); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; border: 1px solid var(--border); transition: 0.3s; }
 
-        footer { margin-top: 200px; color: #111; font-size: 16px; letter-spacing: 15px; font-weight: 900; padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .social-icons { display: flex; gap: 20px; font-size: 22px; color: var(--text-dim); }
+        .social-icons a { color: inherit; transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent); transform: translateY(-3px); }
+
+        /* SECTION HEADINGS */
+        .section-label { font-family: 'JetBrains+Mono', monospace; color: var(--accent); text-transform: uppercase; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+        .section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -1px; }
+
+        /* CARDS & CONTENT (NO DELETION) */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; transition: 0.3s; }
+        .card:hover { border-color: rgba(59, 130, 246, 0.3); }
+
+        .github-graph-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 16px; border: 1px solid var(--border); margin-top: 20px; }
+        .github-graph-box img { width: 100%; filter: invert(0); opacity: 0.9; }
+
+        /* EDUCATION TIMELINE (JEHANABAD) */
+        .edu-box { margin-bottom: 32px; padding-left: 24px; border-left: 1px solid var(--border); position: relative; }
+        .edu-box::before { content: ""; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+        .edu-uni { font-weight: 700; font-size: 1.2rem; margin-bottom: 4px; }
+        .edu-meta { color: var(--text-dim); font-size: 14px; margin-bottom: 8px; }
+
+        /* FOOTER (Screenshot Inspired) */
+        .footer { padding-top: 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; color: var(--text-dim); font-size: 14px; }
+        .footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .footer-nav h5 { color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-nav a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 10px; transition: 0.2s; }
+        .footer-nav a:hover { color: var(--accent); }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .footer { flex-direction: column; gap: 40px; }
+            .hero-name { font-size: 3.5rem; }
+        }
+
+        /* Floating Nav (Screenshot Style) */
+        .floating-nav { 
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            background: rgba(18, 21, 28, 0.8); backdrop-filter: blur(12px);
+            padding: 8px 24px; border-radius: 100px; border: 1px solid var(--border);
+            display: flex; gap: 24px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .floating-nav a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
+        .floating-nav a:hover { color: white; }
+
     </style>
 </head>
 <body>
-    <canvas id="canvas-stars"></canvas>
+
+    <nav class="floating-nav">
+        <a href="#about">About</a>
+        <a href="#edu">Journey</a>
+        <a href="#github">Code</a>
+        <a href="mailto:harshsharma18089@gmail.com">Email</a>
+    </nav>
+
     <div class="container">
-        <header class="fixed-header">
-            <div class="hero-ring"><img src="profile.jpg" alt="Harsh Raj Master Profile"></div>
-            <div class="verified-status"><i class="fas fa-check-circle"></i> GOOGLE VERIFIED MASTER NODE</div>
-            <h1 class="master-h1">Harsh <span style="color:var(--primary)">Raj</span></h1>
-            <div style="color: #666; font-size: 15px; letter-spacing: 10px; font-weight: 700; margin-top: 15px;">HARSHZYNX | ELITE TITAN NODE</div>
-        </header>
-
-        <div class="analytics-hub">
-            <div class="data-pill"><i class="fas fa-fingerprint"></i> <span id="vLog">0</span> SESSIONS</div>
-            <div class="data-pill"><i class="fas fa-microchip"></i> <span id="cLog">--:--:--</span> IST</div>
-            <div class="data-pill"><i class="fas fa-cloud-sun"></i> RAJKOT: 28°C</div>
-        </div>
-
-        <div class="titan-card">
-            <h3><i class="fab fa-github"></i> CONTRIBUTION ARCHIVE</h3>
-            <div class="github-graph">
-                <img src="https://ghchart.rshah.org/00d2ff/harsh62h" alt="Harsh Raj GitHub Activity">
+        
+        <section class="hero" id="about">
+            <div class="verified-pill">
+                <i class="fas fa-check-circle"></i> Google Verified Engineer
             </div>
-            <p style="font-size: 12px; color: #333; margin-top: 25px; text-align: center;">ID: HARSH62H | MASTER NODE SYNC</p>
-        </div>
-
-        <div class="slider-viewport">
-            <div class="slider-track" id="trackEngine">
-                <img src="photo1.jpg" alt="D1"><img src="photo2.jpg" alt="D2"><img src="Photo3.jpg" alt="D3"><img src="photo4 (1).jpg" alt="D4">
+            <h1 class="hero-name">Harsh<br>Raj.</h1>
+            <p class="hero-title">
+                B.Tech Computer Science Scholar at Marwadi University. Specialized in crafting elegant Python solutions and high-performance technical architectures.
+            </p>
+            
+            <div class="btn-row">
+                <a href="#" onclick="exportProResume()" class="btn-primary">
+                    <i class="fas fa-file-alt"></i> Resume / CV
+                </a>
+                <a href="https://wa.me/919263216785" class="btn-secondary">Get In Touch</a>
             </div>
-        </div>
 
-        <div class="titan-card">
-            <h3><i class="fas fa-graduation-cap"></i> EDUCATION LOGS</h3>
-            <div class="edu-timeline">
-                <h4>Marwadi University, Rajkot</h4>
-                <p>B.Tech Computer Science (2024-2028)</p>
+            <div class="social-icons">
+                <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:harshsharma18089@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-            <div class="edu-timeline">
-                <h4>Intermediate (12th Grade)</h4>
-                <p>Manas International School, Bihar</p>
-            </div>
-            <div class="edu-timeline">
-                <h4>Matriculation (10th Grade)</h4>
-                <p>Manas International School, Jehanabad</p>
-            </div>
-            <button onclick="exportProResume()" style="background: #fff; color: #000; padding: 25px; border-radius: 120px; width: 100%; font-weight: 900; margin-top: 55px; border: none; cursor: pointer;">EXPORT RESUME (PDF)</button>
-        </div>
+        </section>
 
-        <div class="titan-card">
-            <h3><i class="fas fa-satellite-dish"></i> ENCRYPTED MAILBOX</h3>
-            <form onsubmit="handleMail(event)">
-                <input type="text" id="vName" style="width:100%; background:rgba(255,255,255,0.06); border:2px solid var(--border); padding:30px; border-radius:35px; color:white; margin-bottom:25px; outline:none;" placeholder="Your Name" required>
-                <textarea id="vMsg" style="width:100%; background:rgba(255,255,255,0.06); border:2px solid var(--border); padding:30px; border-radius:35px; color:white; margin-bottom:25px; outline:none;" rows="7" placeholder="Transmission for harshsharma18089@gmail.com..." required></textarea>
-                <button type="submit" style="background:var(--primary); color:#000; padding:30px; border-radius:120px; width:100%; font-weight:900; border:none; cursor:pointer;">SEND TRANSMISSION</button>
-            </form>
-            <center><div style="background:white; padding:45px; border-radius:60px; display:inline-block; margin-top:60px;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/919263216785" alt="WA QR" style="width:180px;"></div></center>
-        </div>
+        <section id="edu">
+            <span class="section-label">// My Journey</span>
+            <h2 class="section-title">Academic Archive</h2>
+            
+            <div class="edu-box">
+                <div class="edu-uni">Marwadi University, Rajkot</div>
+                <div class="edu-meta">Bachelor of Technology in CSE • 2024 — 2028</div>
+                <p style="color: var(--text-dim);">Specializing in Python automation and modern web systems architecture.</p>
+            </div>
 
-        <div class="social-matrix">
-            <a href="https://x.com/harshzynx" target="_blank" title="X Social"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/harshzynx/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-        <footer>HARSHZYNX CORE MASTER v500.0 | © 2026</footer>
+            <div class="edu-box">
+                <div class="edu-uni">12th Grade (Science)</div>
+                <div class="edu-meta">Manas International School, Bihar</div>
+                <p style="color: var(--text-dim);">Focused on logic building and core engineering foundations.</p>
+            </div>
+
+            <div class="edu-box">
+                <div class="edu-uni">10th Grade (Matric)</div>
+                <div class="edu-meta">Manas International School, Jehanabad</div>
+                <p style="color: var(--text-dim);">Consistent academic record and foundational technical excellence.</p>
+            </div>
+        </section>
+
+        <section id="github" style="margin-top: 100px;">
+            <span class="section-label">// Featured Work</span>
+            <h2 class="section-title">Code Contribution</h2>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 10px;"><i class="fab fa-github"></i> GitHub Analytics</h3>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Real-time sync with @harsh62h repository nodes.</p>
+                <div class="github-graph-box">
+                    <img src="https://ghchart.rshah.org/3b82f6/harsh62h" alt="Harsh Raj GitHub Coding Activity Graph">
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div>
+                <h2 style="color: white; font-family: 'Plus Jakarta Sans'; margin-bottom: 10px;">harshzynx.in</h2>
+                <p>Building things for the web.<br>Available for work globally.</p>
+                <p style="margin-top: 30px;">© 2026 • Harsh Raj</p>
+            </div>
+
+            <div class="footer-nav">
+                <div>
+                    <h5>Navigate</h5>
+                    <a href="#about">About</a>
+                    <a href="#edu">Journey</a>
+                    <a href="#github">Projects</a>
+                </div>
+                <div>
+                    <h5>Connect</h5>
+                    <a href="https://github.com/harsh62h">GitHub</a>
+                    <a href="https://linkedin.com">LinkedIn</a>
+                    <a href="https://x.com/harshzynx">X / Twitter</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-        function syncClock() { const time = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false }); document.getElementById('cLog').innerText = time; }
-        setInterval(syncClock, 1000); syncClock();
-        let ptr = 0; setInterval(() => { ptr = (ptr + 1) % 4; document.getElementById('trackEngine').style.transform = `translateX(-${ptr * 25}%)`; }, 3500);
-        let sessions = localStorage.getItem('hv_v500') || 0; sessions++; localStorage.setItem('hv_v500', sessions); document.getElementById('vLog').innerText = sessions;
-        function handleMail(e) { e.preventDefault(); window.location.href = `mailto:harshsharma18089@gmail.com?subject=Titan&body=Name: ${document.getElementById('vName').value}`; }
-        function exportProResume() { const content = "HARSH RAJ\nEducation: Manas International to Marwadi University\nWhatsApp: 9263216785"; const blob = new Blob([content], { type: 'text/plain' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'HarshRaj_Resume.txt'; a.click(); }
-        const canvas = document.getElementById('canvas-stars'); const ctx = canvas.getContext('2d'); let starSet = [];
-        function buildUniverse() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; starSet = []; for(let i=0; i<300; i++) { starSet.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*3, v: Math.random()*0.5 }); } }
-        function renderUniverse() { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="white"; starSet.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill(); s.y += s.v; if(s.y > canvas.height) s.y=0; }); requestAnimationFrame(renderUniverse); }
-        window.addEventListener('resize', buildUniverse); buildUniverse(); renderUniverse();
+        function exportProResume() {
+            const content = "HARSH RAJ — FULL STACK ENGINEER\nB.Tech Marwadi University, Rajkot\nSchooling: Manas International, Jehanabad\nWhatsApp: 9263216785";
+            const blob = new Blob([content], { type: 'text/plain' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'HarshRaj_Resume.txt'; a.click();
+        }
     </script>
 </body>
 </html>
+
