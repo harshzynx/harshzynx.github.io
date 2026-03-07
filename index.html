@@ -6,7 +6,7 @@
     
     <meta name="google-site-verification" content="MzRa-c-0qGRbnGtsAU_ETOSU_B0p7kaao4oCHIv3Ibc" />
 
-    <meta name="description" content="Official Portfolio of Harsh Raj. B.Tech Computer Science Scholar at Marwadi University. Alumni: Manas International School, Bihar. Python Specialist.">
+    <meta name="description" content="Verified Portfolio of Harsh Raj. B.Tech CSE Scholar at Marwadi University. Alumni: Manas International School, Bihar.">
     <title>Harsh Raj — Full Stack Engineer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,203 +14,166 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* ================================================================
-           MODERNIST DESIGN SYSTEM (ZERO DELETION)
-           ================================================================
-        */
         :root { 
-            --bg: #0a0c10; 
-            --card: #12151c; 
-            --accent: #3b82f6; 
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
+            --bg: #ffffff; --card: #f8fafc; --accent: #25d366; /* WhatsApp Green */
+            --link: #3b82f6; --text-main: #0f172a; --text-dim: #64748b;
+            --border: rgba(0, 0, 0, 0.08); --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0c10; --card: #12151c; 
+            --text-main: #f8fafc; --text-dim: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: background var(--transition), color var(--transition); }
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+
+        /* THEME TOGGLE */
+        .mode-toggle-wrap { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .theme-switch { background: var(--card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 100px; cursor: pointer; color: var(--text-main); font-weight: 600; display: flex; align-items: center; gap: 10px; }
+
+        /* HERO SECTION */
+        .hero { margin-bottom: 100px; }
+        .profile-img-box { width: 125px; height: 125px; border-radius: 50%; border: 4px solid var(--link); padding: 5px; margin-bottom: 30px; }
+        .profile-img-box img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text-main); 
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
-
-        /* HERO SECTION (Screenshot Inspired) */
-        .hero { margin-bottom: 120px; }
+        .hero-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -3px; margin-bottom: 25px; }
         
-        .verified-pill {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(59, 130, 246, 0.1); color: var(--accent);
-            padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 600;
-            margin-bottom: 24px; border: 1px solid rgba(59, 130, 246, 0.2);
+        /* HIGHLIGHTED WHATSAPP BUTTON */
+        .wa-btn { 
+            background: #25d366; color: white; padding: 16px 32px; border-radius: 14px; 
+            text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; 
+            gap: 12px; margin-top: 25px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); 
+            transition: 0.3s; font-size: 1.1rem;
         }
+        .wa-btn:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); }
 
-        .hero-name { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            font-size: clamp(3rem, 10vw, 5rem); 
-            font-weight: 800; line-height: 0.9; letter-spacing: -2px;
-            margin-bottom: 30px; background: linear-gradient(to right, #fff, #64748b);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        /* PHOTO SLIDER */
+        .slider-viewport { width: 100%; height: 480px; border-radius: 35px; overflow: hidden; margin: 60px 0; border: 2px solid var(--border); position: relative; }
+        .slider-track { display: flex; width: 400%; height: 100%; transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .slider-track img { width: 25%; height: 100%; object-fit: cover; }
 
-        .hero-title { font-size: 1.25rem; color: var(--text-dim); max-width: 500px; margin-bottom: 40px; }
+        /* CARDS */
+        .section-label { font-family: 'JetBrains Mono', monospace; color: var(--link); text-transform: uppercase; font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; }
 
-        .btn-row { display: flex; gap: 16px; margin-bottom: 40px; }
-        .btn-primary { background: var(--accent); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .btn-secondary { background: var(--card); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; border: 1px solid var(--border); transition: 0.3s; }
+        .edu-box { margin-bottom: 32px; padding-left: 24px; border-left: 2px solid var(--border); position: relative; }
+        .edu-box::after { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--link); }
 
-        .social-icons { display: flex; gap: 20px; font-size: 22px; color: var(--text-dim); }
-        .social-icons a { color: inherit; transition: 0.3s; }
-        .social-icons a:hover { color: var(--accent); transform: translateY(-3px); }
+        .github-wrap { background: #000; padding: 25px; border-radius: 20px; border: 1px solid var(--border); margin-top: 20px; }
+        .github-wrap img { width: 100%; }
 
-        /* SECTION HEADINGS */
-        .section-label { font-family: 'JetBrains+Mono', monospace; color: var(--accent); text-transform: uppercase; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; display: block; }
-        .section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -1px; }
+        /* FLOATING NAV */
+        .nav-float { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--card); backdrop-filter: blur(12px); padding: 10px 24px; border-radius: 100px; border: 1px solid var(--border); display: flex; gap: 24px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .nav-float a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; }
 
-        /* CARDS & CONTENT (NO DELETION) */
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; transition: 0.3s; }
-        .card:hover { border-color: rgba(59, 130, 246, 0.3); }
-
-        .github-graph-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 16px; border: 1px solid var(--border); margin-top: 20px; }
-        .github-graph-box img { width: 100%; filter: invert(0); opacity: 0.9; }
-
-        /* EDUCATION TIMELINE (JEHANABAD) */
-        .edu-box { margin-bottom: 32px; padding-left: 24px; border-left: 1px solid var(--border); position: relative; }
-        .edu-box::before { content: ""; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
-        .edu-uni { font-weight: 700; font-size: 1.2rem; margin-bottom: 4px; }
-        .edu-meta { color: var(--text-dim); font-size: 14px; margin-bottom: 8px; }
-
-        /* FOOTER (Screenshot Inspired) */
-        .footer { padding-top: 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; color: var(--text-dim); font-size: 14px; }
-        .footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .footer-nav h5 { color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-nav a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 10px; transition: 0.2s; }
-        .footer-nav a:hover { color: var(--accent); }
-
-        /* RESPONSIVE */
-        @media (max-width: 600px) {
-            .footer { flex-direction: column; gap: 40px; }
-            .hero-name { font-size: 3.5rem; }
-        }
-
-        /* Floating Nav (Screenshot Style) */
-        .floating-nav { 
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
-            background: rgba(18, 21, 28, 0.8); backdrop-filter: blur(12px);
-            padding: 8px 24px; border-radius: 100px; border: 1px solid var(--border);
-            display: flex; gap: 24px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .floating-nav a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
-        .floating-nav a:hover { color: white; }
-
+        footer { padding: 60px 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 14px; }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
-    <nav class="floating-nav">
+    <nav class="nav-float">
         <a href="#about">About</a>
-        <a href="#edu">Journey</a>
+        <a href="#photos">Gallery</a>
+        <a href="#journey">Journey</a>
         <a href="#github">Code</a>
-        <a href="mailto:harshsharma18089@gmail.com">Email</a>
     </nav>
 
     <div class="container">
         
+        <div class="mode-toggle-wrap">
+            <button class="theme-switch" onclick="toggleMode()">
+                <i class="fas fa-moon"></i> <span>Night Mode</span>
+            </button>
+        </div>
+
         <section class="hero" id="about">
-            <div class="verified-pill">
-                <i class="fas fa-check-circle"></i> Google Verified Engineer
-            </div>
+            <div class="profile-img-box">
+                <img src="profile.jpg" alt="Harsh Raj Profile"> </div>
+            <div style="color:var(--link); font-weight:800; font-size:12px; letter-spacing:2px; margin-bottom:15px; text-transform:uppercase;"><i class="fas fa-check-circle"></i> Google Verified Engineer</div>
             <h1 class="hero-name">Harsh<br>Raj.</h1>
-            <p class="hero-title">
-                B.Tech Computer Science Scholar at Marwadi University. Specialized in crafting elegant Python solutions and high-performance technical architectures.
+            <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 550px;">
+                B.Tech Computer Science Scholar at Marwadi University. Crafting modern Python systems and elite web architectures.
             </p>
-            
-            <div class="btn-row">
-                <a href="#" onclick="exportProResume()" class="btn-primary">
-                    <i class="fas fa-file-alt"></i> Resume / CV
-                </a>
-                <a href="https://wa.me/919263216785" class="btn-secondary">Get In Touch</a>
-            </div>
+            <a href="https://wa.me/919263216785" class="wa-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </section>
 
-            <div class="social-icons">
-                <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/harshzynx-09a42a275" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:harshsharma18089@gmail.com"><i class="fas fa-envelope"></i></a>
+        <section id="photos">
+            <span class="section-label">// Visual Archive</span>
+            <div class="slider-viewport">
+                <div class="slider-track" id="trackEngine">
+                    <img src="photo1.jpg" alt="D1"><img src="photo2.jpg" alt="D2"><img src="Photo3.jpg" alt="D3"><img src="photo4 (1).jpg" alt="D4">
+                </div>
             </div>
         </section>
 
-        <section id="edu">
-            <span class="section-label">// My Journey</span>
-            <h2 class="section-title">Academic Archive</h2>
-            
-            <div class="edu-box">
-                <div class="edu-uni">Marwadi University, Rajkot</div>
-                <div class="edu-meta">Bachelor of Technology in CSE • 2024 — 2028</div>
-                <p style="color: var(--text-dim);">Specializing in Python automation and modern web systems architecture.</p>
-            </div>
-
-            <div class="edu-box">
-                <div class="edu-uni">12th Grade (Science)</div>
-                <div class="edu-meta">Manas International School, Bihar</div>
-                <p style="color: var(--text-dim);">Focused on logic building and core engineering foundations.</p>
-            </div>
-
-            <div class="edu-box">
-                <div class="edu-uni">10th Grade (Matric)</div>
-                <div class="edu-meta">Manas International School, Jehanabad</div>
-                <p style="color: var(--text-dim);">Consistent academic record and foundational technical excellence.</p>
-            </div>
-        </section>
-
-        <section id="github" style="margin-top: 100px;">
-            <span class="section-label">// Featured Work</span>
-            <h2 class="section-title">Code Contribution</h2>
+        <section id="journey" style="margin-top: 80px;">
+            <span class="section-label">// Academic History</span>
+            <h2 style="font-size: 2.8rem; margin-bottom: 40px; font-family: 'Plus Jakarta Sans'; font-weight: 800;">Journey Log</h2>
             
             <div class="card">
-                <h3 style="margin-bottom: 10px;"><i class="fab fa-github"></i> GitHub Analytics</h3>
-                <p style="color: var(--text-dim); margin-bottom: 20px;">Real-time sync with @harsh62h repository nodes.</p>
-                <div class="github-graph-box">
-                    <img src="https://ghchart.rshah.org/3b82f6/harsh62h" alt="Harsh Raj GitHub Coding Activity Graph">
+                <div class="edu-box">
+                    <div style="font-weight: 800; font-size: 1.3rem;">Marwadi University, Rajkot</div>
+                    <div style="color:var(--text-dim); font-size:14px;">B.Tech Computer Science • 2024 — 2028</div>
+                </div>
+                <div class="edu-box">
+                    <div style="font-weight: 800; font-size: 1.3rem;">Manas International School, Bihar</div>
+                    <div style="color:var(--text-dim); font-size:14px;">12th Grade (Intermediate)</div>
+                </div>
+                <div class="edu-box">
+                    <div style="font-weight: 800; font-size: 1.3rem;">Manas International School, Jehanabad</div>
+                    <div style="color:var(--text-dim); font-size:14px;">10th Grade (Matriculation)</div>
                 </div>
             </div>
         </section>
 
-        <footer class="footer">
-            <div>
-                <h2 style="color: white; font-family: 'Plus Jakarta Sans'; margin-bottom: 10px;">harshzynx.in</h2>
-                <p>Building things for the web.<br>Available for work globally.</p>
-                <p style="margin-top: 30px;">© 2026 • Harsh Raj</p>
-            </div>
-
-            <div class="footer-nav">
-                <div>
-                    <h5>Navigate</h5>
-                    <a href="#about">About</a>
-                    <a href="#edu">Journey</a>
-                    <a href="#github">Projects</a>
+        <section id="github" style="margin-top: 80px;">
+            <span class="section-label">// Contributions</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-family: 'Plus Jakarta Sans'; font-weight: 800;">Technical Stats</h2>
+            <div class="card">
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Real-time sync with @harsh62h repository.</p>
+                <div class="github-wrap">
+                    <img src="https://ghchart.rshah.org/3b82f6/harsh62h" alt="GitHub Graph">
                 </div>
-                <div>
-                    <h5>Connect</h5>
-                    <a href="https://github.com/harsh62h">GitHub</a>
-                    <a href="https://linkedin.com">LinkedIn</a>
-                    <a href="https://x.com/harshzynx">X / Twitter</a>
+            </div>
+        </section>
+
+        <footer>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>© 2026 Harsh Raj</div>
+                <div style="display: flex; gap: 20px; font-size: 20px;">
+                    <a href="https://x.com/harshzynx" style="color: inherit;" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://github.com/harsh62h" style="color: inherit;" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        function exportProResume() {
-            const content = "HARSH RAJ — FULL STACK ENGINEER\nB.Tech Marwadi University, Rajkot\nSchooling: Manas International, Jehanabad\nWhatsApp: 9263216785";
-            const blob = new Blob([content], { type: 'text/plain' });
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'HarshRaj_Resume.txt'; a.click();
+        function toggleMode() {
+            const body = document.body;
+            const btn = document.querySelector('.theme-switch span');
+            const icon = document.querySelector('.theme-switch i');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                btn.innerText = "Light Mode";
+                icon.className = "fas fa-sun";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerText = "Night Mode";
+                icon.className = "fas fa-moon";
+            }
         }
+
+        let ptr = 0;
+        setInterval(() => { 
+            ptr = (ptr + 1) % 4; 
+            document.getElementById('trackEngine').style.transform = `translateX(-${ptr * 25}%)`; 
+        }, 3500);
     </script>
 </body>
 </html>
-
