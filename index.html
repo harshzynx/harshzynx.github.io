@@ -20,12 +20,16 @@
         .close-btn { position: absolute; top: 20px; right: 25px; font-size: 40px; color: white; cursor: pointer; }
         .slider-box { width: 95%; max-width: 800px; height: 500px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; background: #000; }
         .track { display: flex; transition: 0.5s ease; height: 100%; }
-        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; background: #000; }
+        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; }
         
         .btn-row { display: flex; gap: 15px; margin-top: 25px; justify-content: center; flex-wrap: wrap; }
         .icon-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 15px 25px; border-radius: 14px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
         .icon-btn:hover { border-color: var(--accent); transform: translateY(-3px); }
         .nav-btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+        
+        .socials { display: flex; gap: 20px; font-size: 24px; margin-top: 20px; }
+        .socials a { color: var(--text); opacity: 0.7; transition: 0.3s; }
+        .socials a:hover { opacity: 1; color: var(--accent); }
     </style>
 </head>
 <body data-theme="dark">
@@ -34,8 +38,8 @@
         <span class="close-btn" onclick="closeBox('certVault')">&times;</span>
         <div class="slider-box">
             <div class="track" id="certTrack">
-                <img src="1000131619.jpg"> <img src="1000131620.jpg"> <img src="1000131621.jpg"> 
-                <img src="1000131622.jpg"> <img src="1000131623.jpg"> <img src="1000131624.jpg">
+                <img src="Certificate 1.jpg"> <img src="Certificate 2.jpg"> <img src="Certificate 3.jpg"> 
+                <img src="Certificate 4.jpg"> <img src="Certificate 6.jpg"> <img src="Certificate 7.jpg">
             </div>
         </div>
         <div class="btn-row">
@@ -48,7 +52,7 @@
         <span class="close-btn" onclick="closeBox('photoVault')">&times;</span>
         <div class="slider-box">
             <div class="track" id="photoTrack">
-                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="photo3.jpg"> <img src="photo4.jpg">
+                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="Photo3.jpg"> <img src="photo4 (1).jpg">
             </div>
         </div>
         <div class="btn-row">
@@ -58,22 +62,28 @@
     </div>
 
     <div class="container">
-        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:60px;">
-            <div style="font-weight:800; color:var(--accent);">HARSHZYNX.IO</div>
+        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:50px;">
+            <div style="font-weight:800; color:var(--accent); font-size:1.2rem;">HARSHZYNX.IO</div>
             <button onclick="toggleTheme()" class="icon-btn" style="padding: 8px 15px;">Night Mode</button>
         </header>
 
         <section>
             <h1 style="font-family:'Plus Jakarta Sans'; font-size: clamp(3rem, 10vw, 5rem); line-height: 1; margin-bottom: 20px;">Harsh Raj.</h1>
-            <p style="color:var(--text-dim); font-size: 1.2rem; margin-bottom: 40px;">B.Tech CS Student @ Marwadi University, Rajkot.</p>
+            <p style="color:var(--text-dim); font-size: 1.2rem; max-width:600px;">B.Tech CS Student @ Marwadi University, Rajkot.</p>
             
-            <div class="btn-row" style="justify-content: flex-start;">
+            <div class="socials">
+                <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/harshzynx" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="mailto:harshsharma18089@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="btn-row" style="justify-content: flex-start; margin-top: 40px;">
                 <button class="icon-btn" onclick="openBox('certVault')">
                     <i class="fas fa-medal" style="color: gold;"></i> My Certificates
                 </button>
-                
                 <button class="icon-btn" onclick="openBox('photoVault')">
-                    <i class="fas fa-images" style="color: var(--accent);"></i> My Photos
+                    <i class="fas fa-images" style="color: var(--accent);"></i> My Gallery
                 </button>
             </div>
         </section>
@@ -83,7 +93,7 @@
             <div style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px;">
                 <p><b>Marwadi University, Rajkot</b><br>B.Tech Computer Science (2024 - 2028)</p>
                 <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border);">
-                <p><b>Manas International School, Jehanabad</b><br>Secondary & Higher Secondary Education</p>
+                <p><b>Manas International School, Jehanabad</b><br>10th & 12th Grades Education Archive</p>
             </div>
         </section>
 
