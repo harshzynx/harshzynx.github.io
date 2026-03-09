@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="MzRa-c-0qGRbnGtsAU_ETOSU_B0p7kaao4oCHIv3Ibc" />
-    <meta name="description" content="Official Portfolio of Harsh Raj (Harshzynx).">
     <title>Harsh Raj — Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
@@ -16,90 +15,87 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.4s; }
         .container { max-width: 850px; margin: 0 auto; padding: 40px 24px; }
         
-        .hero-name { font-family: 'Plus Jakarta Sans'; font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 30px; }
+        /* 🖼️ MODAL SYSTEM */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 40px; color: white; cursor: pointer; }
+        .slider-box { width: 90%; max-width: 800px; height: 550px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; background: #000; }
+        .track { display: flex; transition: 0.6s; height: 100%; }
+        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; }
         
-        /* OVERLAY SYSTEM */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
-        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 30px; color: white; cursor: pointer; }
-        
-        .slider-box { width: 90%; max-width: 800px; height: 500px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; }
-        .track { display: flex; transition: 0.5s; height: 100%; }
-        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; background: #000; }
-        
-        .btn-group { display: flex; gap: 15px; margin-top: 20px; }
-        .action-btn { background: var(--accent); color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-weight: 600; }
-        .gallery-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 12px; cursor: pointer; }
+        .btn-row { display: flex; gap: 15px; margin-top: 25px; }
+        .nav-btn { background: var(--accent); color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: 700; }
+        .main-btn { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 14px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
+        .sec-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 15px 30px; border-radius: 14px; cursor: pointer; font-weight: 700; }
     </style>
 </head>
 <body data-theme="dark">
 
-    <div id="photoOverlay" class="overlay">
-        <span class="close-btn" onclick="closeAll()">&times;</span>
-        <h2 style="color:white; margin-bottom:15px;">Personal Gallery</h2>
+    <div id="photoVault" class="modal">
+        <span class="close-btn" onclick="closeModal('photoVault')">&times;</span>
         <div class="slider-box">
             <div class="track" id="photoTrack">
-                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="Photo3.jpg"> <img src="photo4 (1).jpg">
+                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="photo3.jpg"> <img src="photo4.jpg">
             </div>
         </div>
-        <div class="btn-group">
-            <button class="action-btn" onclick="moveSlide('photoTrack', -1)">Prev</button>
-            <button class="action-btn" onclick="moveSlide('photoTrack', 1)">Next</button>
+        <div class="btn-row">
+            <button class="nav-btn" onclick="slide('photoTrack', -1)">PREV</button>
+            <button class="nav-btn" onclick="slide('photoTrack', 1)">NEXT</button>
         </div>
     </div>
 
-    <div id="certOverlay" class="overlay">
-        <span class="close-btn" onclick="closeAll()">&times;</span>
-        <h2 style="color:white; margin-bottom:15px;">Elite Certificates</h2>
+    <div id="certVault" class="modal">
+        <span class="close-btn" onclick="closeModal('certVault')">&times;</span>
         <div class="slider-box">
             <div class="track" id="certTrack">
                 <img src="1000131609.jpg"> <img src="1000131600.jpg"> <img src="1000131603.jpg"> 
                 <img src="1000131615.jpg"> <img src="1000131612.jpg"> <img src="1000131606.jpg"> <img src="1000131618.jpg">
             </div>
         </div>
-        <div class="btn-group">
-            <button class="action-btn" onclick="moveSlide('certTrack', -1)">Prev</button>
-            <button class="action-btn" onclick="moveSlide('certTrack', 1)">Next</button>
+        <div class="btn-row">
+            <button class="nav-btn" onclick="slide('certTrack', -1)">PREV</button>
+            <button class="nav-btn" onclick="slide('certTrack', 1)">NEXT</button>
         </div>
     </div>
 
     <div class="container">
-        <header style="display:flex; justify-content:space-between; margin-bottom:40px;">
-            <div style="font-weight:800; color:var(--accent);">HARSHZYNX</div>
-            <button onclick="toggleTheme()" class="gallery-btn">Night Mode</button>
+        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:60px;">
+            <div style="font-weight:800; font-size:1.2rem; color:var(--accent);">HARSHZYNX.IO</div>
+            <button onclick="toggleTheme()" class="sec-btn" style="padding:8px 20px; font-size:14px;">Night Mode</button>
         </header>
 
         <section>
-            <h1 class="hero-name">Harsh<br>Raj.</h1>
-            <p style="color:var(--text-dim); margin-bottom:30px;">B.Tech Computer Science @ Marwadi University.</p>
+            <h1 style="font-family:'Plus Jakarta Sans'; font-size:clamp(3rem, 10vw, 5.5rem); line-height:0.9; margin-bottom:25px;">Harsh<br>Raj.</h1>
+            <p style="color:var(--text-dim); font-size:1.2rem; max-width:600px; margin-bottom:40px;">
+                Full Stack Developer at Marwadi University. Specialized in building functional and delightful technical products.
+            </p>
             
             <div style="display:flex; gap:15px; flex-wrap:wrap;">
-                <button class="action-btn" onclick="openBox('photoOverlay')"><i class="fas fa-images"></i> My Photos</button>
-                <button class="gallery-btn" onclick="openBox('certOverlay')"><i class="fas fa-certificate"></i> My Certificates</button>
-                <a href="https://wa.me/919263216785" class="action-btn" style="text-decoration:none; background:#22c55e;">WhatsApp</a>
+                <button class="main-btn" onclick="openModal('photoVault')"><i class="fas fa-camera"></i> Photos</button>
+                <button class="sec-btn" onclick="openModal('certVault')"><i class="fas fa-medal"></i> Certificates</button>
+                <a href="https://wa.me/919263216785" class="main-btn" style="background:#22c55e; text-decoration:none;">WhatsApp</a>
             </div>
         </section>
 
-        <section style="margin-top:50px;">
-            <h2 style="font-size:1.8rem; margin-bottom:20px;">Education Archive</h2>
-            <div class="card">
-                <p><b>Marwadi University, Rajkot</b><br>B.Tech CS (2024-2028)</p>
-                <hr style="margin:15px 0; border:0; border-top:1px solid var(--border);">
-                <p><b>Manas International School, Jehanabad</b><br>10th & 12th Grades</p>
+        <section style="margin-top:80px;">
+            <h2 style="font-size:2rem; margin-bottom:30px;">Education</h2>
+            <div style="background:var(--card); border:1px solid var(--border); border-radius:24px; padding:35px;">
+                <p><b>Marwadi University, Rajkot</b><br>B.Tech Computer Science (2024-2028)</p>
+                <hr style="margin:20px 0; border:0; border-top:1px solid var(--border);">
+                <p><b>Manas International School, Bihar</b><br>10th & 12th Grades Education Archive</p>
             </div>
         </section>
     </div>
 
     <script>
-        let slides = { certTrack: 0, photoTrack: 0 };
-        function openBox(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeAll() { document.querySelectorAll('.overlay').forEach(el => el.style.display = 'none'); }
+        let pos = { certTrack: 0, photoTrack: 0 };
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         
-        function moveSlide(trackId, dir) {
-            const track = document.getElementById(trackId);
-            const total = track.children.length;
-            slides[trackId] = (slides[trackId] + dir + total) % total;
-            track.style.transform = `translateX(-${slides[trackId] * 100}%)`;
+        function slide(id, dir) {
+            const track = document.getElementById(id);
+            const items = track.children.length;
+            pos[id] = (pos[id] + dir + items) % items;
+            track.style.transform = `translateX(-${pos[id] * 100}%)`;
         }
         function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
     </script>
