@@ -27,7 +27,6 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: 0.4s; }
         .container { max-width: 850px; margin: 0 auto; padding: 60px 24px; }
 
-        /* NAV */
         .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
         .theme-toggle { 
             background: var(--card); border: 1px solid var(--border); padding: 10px 20px; 
@@ -35,41 +34,60 @@
             display: flex; align-items: center; gap: 10px; font-size: 14px;
         }
 
-        /* HERO */
         .hero-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 800; line-height: 0.9; letter-spacing: -3px; margin-bottom: 25px; }
         .socials { display: flex; gap: 20px; font-size: 24px; margin-bottom: 40px; }
         .socials a { color: var(--text-dim); transition: 0.3s; }
         .socials a:hover { color: var(--accent); transform: translateY(-3px); }
 
-        /* SKILLS */
-        .skill-box { margin-bottom: 20px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        .skill-bar { height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
-        .skill-progress { height: 100%; background: var(--accent); border-radius: 10px; }
-
-        /* SECTIONS */
         .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; }
         .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; font-family: 'Plus Jakarta Sans'; color: var(--accent); }
 
-        /* VAULT */
-        #vault { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: none; align-items: center; justify-content: center; }
-        .slider { width: 85%; max-width: 800px; height: 500px; border-radius: 25px; overflow: hidden; border: 2px solid var(--accent); }
-        .track { display: flex; width: 400%; height: 100%; transition: 0.8s; }
-        .track img { width: 25%; height: 100%; object-fit: cover; }
+        /* 🖼️ HIDDEN GALLERY VAULT (ZERO REMOVAL) */
+        #certVault {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); z-index: 2000; display: none;
+            flex-direction: column; align-items: center; justify-content: center;
+        }
+        .close-vault { position: absolute; top: 30px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
         
+        .slider-viewport { 
+            width: 85%; max-width: 900px; height: 550px; 
+            border-radius: 25px; overflow: hidden; position: relative; 
+            border: 3px solid var(--accent); 
+        }
+        .slider-track { display: flex; width: 700%; height: 100%; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
+        .slider-track img { width: calc(100% / 7); height: 100%; object-fit: contain; background: #000; }
+
+        .slider-nav { margin-top: 20px; display: flex; gap: 15px; }
+        .nav-btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+
         footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border); color: var(--text-dim); text-align: center; }
     </style>
 </head>
 <body data-theme="dark">
 
-    <div id="vault">
-        <span onclick="closeVault()" style="position: absolute; top: 30px; right: 30px; color: white; font-size: 40px; cursor: pointer;">&times;</span>
-        <div class="slider"><div class="track" id="st"><img src="photo1.jpg"><img src="photo2.jpg"><img src="Photo3.jpg"><img src="photo4 (1).jpg"></div></div>
+    <div id="certVault">
+        <span class="close-vault" onclick="closeVault()">&times; Close</span>
+        <div class="slider-viewport">
+            <div class="slider-track" id="sliderTrack">
+                <img src="1000131609.jpg" alt="Cert 1">
+                <img src="1000131600.jpg" alt="Cert 2">
+                <img src="1000131603.jpg" alt="Cert 3">
+                <img src="1000131615.jpg" alt="Cert 4">
+                <img src="1000131612.jpg" alt="Cert 5">
+                <img src="1000131606.jpg" alt="Cert 6">
+                <img src="1000131618.jpg" alt="Cert 7">
+            </div>
+        </div>
+        <div class="slider-nav">
+            <button class="nav-btn" onclick="moveSlider(-1)">Prev</button>
+            <button class="nav-btn" onclick="moveSlider(1)">Next</button>
+        </div>
     </div>
 
     <div class="container">
         <div class="header-nav">
-            <div style="font-weight: 700; color: var(--accent);">HARSHZYNX.IO</div>
+            <div style="font-weight: 700; color: var(--accent);">HARSHZYNX Node</div>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <i class="fas fa-moon"></i> <span>Night Mode</span>
             </button>
@@ -78,7 +96,7 @@
         <section class="hero">
             <h1 class="hero-name">Harsh<br>Raj.</h1>
             <p style="font-size: 1.25rem; color: var(--text-dim); max-width: 600px; margin-bottom: 30px;">
-                Full Stack Developer & 3D Animator. B.Tech CS @ Marwadi University, Rajkot. Specialized in Python & React architectures.
+                Full Stack Engineer & Visual Designer. Currently at Marwadi University, Rajkot. Python & React Specialist.
             </p>
             <div class="socials">
                 <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
@@ -87,33 +105,27 @@
                 <a href="mailto:harshsharma18089@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
             <div style="display: flex; gap: 15px; margin-bottom: 60px;">
-                <a href="https://wa.me/919263216785" style="background:var(--success); color:white; padding:12px 24px; border-radius:12px; text-decoration:none; font-weight:700;">WhatsApp Me</a>
-                <button onclick="openVault()" style="background:var(--card); border:1px solid var(--border); color:white; padding:12px 24px; border-radius:12px; cursor:pointer;">Gallery Vault</button>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2 class="section-title">Technical Mastery</h2>
-            <div class="card">
-                <div class="skill-box"><div class="skill-info"><span>Python & Backend</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
-                <div class="skill-box"><div class="skill-info"><span>3D Animation</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div></div>
-            </div>
-        </section>
-
-        <section id="achievements">
-            <h2 class="section-title">Elite Certificates</h2>
-            <div class="card">
-                <p><b>Merit Award:</b> Manas International Public School</p>
-                <p><b>Core Python:</b> Marwadi University Elite Batch</p>
+                <a href="https://wa.me/919263216785" style="background:var(--success); color:white; padding:12px 24px; border-radius:12px; text-decoration:none; font-weight:700;">Chat on WA</a>
+                
+                <button onclick="openVault()" style="background:var(--card); border:1px solid var(--border); color:white; padding:12px 24px; border-radius:12px; cursor:pointer;">
+                    <i class="fas fa-certificate"></i> Open Certifications Gallery
+                </button>
             </div>
         </section>
 
         <section id="journey">
             <h2 class="section-title">Academic Journey</h2>
             <div class="card">
-                <p><b>Marwadi University, Rajkot</b><br>B.Tech CS (2024 - 2028)</p>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--border);">
-                <p><b>Manas International School, Bihar</b><br>10th & 12th Grades</p>
+                <p><b>Marwadi University, Rajkot</b><br>B.Tech Computer Science (2024-2028)</p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border);">
+                <p><b>Manas International School, Bihar</b><br>10th & 12th Grades Complete</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p style="color:var(--text-dim);">Passionate Full Stack Developer specializing in building functional and delightful products. Focused on Python, React, and Cloud Architectures.</p>
             </div>
         </section>
 
@@ -124,16 +136,25 @@
     </div>
 
     <script>
+        // VAULT LOGIC
+        function openVault() { document.getElementById('certVault').style.display = 'flex'; }
+        function closeVault() { document.getElementById('certVault').style.display = 'none'; }
+
+        // SLIDER LOGIC
+        let currentSlide = 0;
+        const totalSlides = 7;
+        function moveSlider(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const offset = -currentSlide * (100 / totalSlides);
+            document.getElementById('sliderTrack').style.transform = `translateX(${offset}%)`;
+        }
+
+        // NIGHT MODE LOGIC
         function toggleTheme() {
             const body = document.body;
             const isDark = body.getAttribute('data-theme') === 'dark';
             body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            document.querySelector('.theme-toggle span').innerText = isDark ? "Light Mode" : "Night Mode";
-            document.querySelector('.theme-toggle i').className = isDark ? "fas fa-sun" : "fas fa-moon";
         }
-        function openVault() { document.getElementById('vault').style.display = 'flex'; }
-        function closeVault() { document.getElementById('vault').style.display = 'none'; }
-        let ptr = 0; setInterval(() => { ptr = (ptr + 1) % 4; document.getElementById('st').style.transform = `translateX(-${ptr * 25}%)`; }, 3000);
     </script>
 </body>
 </html>
