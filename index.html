@@ -12,91 +12,86 @@
     <style>
         :root { --bg: #0a0c10; --card: #12151c; --accent: #3b82f6; --text: #f8fafc; --border: rgba(255, 255, 255, 0.08); }
         [data-theme="light"] { --bg: #ffffff; --card: #f8fafc; --text: #0f172a; --border: rgba(0, 0, 0, 0.08); }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.4s; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.4s; overflow-x: hidden; }
         .container { max-width: 850px; margin: 0 auto; padding: 40px 24px; }
         
-        /* 🖼️ MODAL SYSTEM */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
         .close-btn { position: absolute; top: 20px; right: 25px; font-size: 40px; color: white; cursor: pointer; }
-        .slider-box { width: 90%; max-width: 800px; height: 550px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; background: #000; }
-        .track { display: flex; transition: 0.6s; height: 100%; }
-        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; }
+        .slider-box { width: 95%; max-width: 800px; height: 500px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; background: #000; position: relative; }
+        .track { display: flex; transition: 0.5s ease-in-out; height: 100%; }
+        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; background: #000; }
         
-        .btn-row { display: flex; gap: 15px; margin-top: 25px; }
+        .btn-row { display: flex; gap: 15px; margin-top: 25px; justify-content: center; }
         .nav-btn { background: var(--accent); color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: 700; }
-        .main-btn { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 14px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
-        .sec-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 15px 30px; border-radius: 14px; cursor: pointer; font-weight: 700; }
+        .main-btn { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 14px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+        .sec-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 14px; cursor: pointer; font-weight: 700; }
+        .cert-label { color: white; margin-top: 10px; font-weight: 600; text-align: center; font-size: 1.1rem; }
     </style>
 </head>
 <body data-theme="dark">
-
-    <div id="photoVault" class="modal">
-        <span class="close-btn" onclick="closeModal('photoVault')">&times;</span>
-        <div class="slider-box">
-            <div class="track" id="photoTrack">
-                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="photo3.jpg"> <img src="photo4.jpg">
-            </div>
-        </div>
-        <div class="btn-row">
-            <button class="nav-btn" onclick="slide('photoTrack', -1)">PREV</button>
-            <button class="nav-btn" onclick="slide('photoTrack', 1)">NEXT</button>
-        </div>
-    </div>
 
     <div id="certVault" class="modal">
         <span class="close-btn" onclick="closeModal('certVault')">&times;</span>
         <div class="slider-box">
             <div class="track" id="certTrack">
-                <img src="1000131609.jpg"> <img src="1000131600.jpg"> <img src="1000131603.jpg"> 
-                <img src="1000131615.jpg"> <img src="1000131612.jpg"> <img src="1000131606.jpg"> <img src="1000131618.jpg">
+                <img src="1000131619.jpg" alt="Certificate 1">
+                <img src="1000131620.jpg" alt="Certificate 2">
+                <img src="1000131621.jpg" alt="Certificate 3">
+                <img src="1000131622.jpg" alt="Certificate 4">
+                <img src="1000131623.jpg" alt="Certificate 6">
+                <img src="1000131624.jpg" alt="Certificate 7">
             </div>
         </div>
+        <div id="certName" class="cert-label">Certificate 1</div>
         <div class="btn-row">
-            <button class="nav-btn" onclick="slide('certTrack', -1)">PREV</button>
-            <button class="nav-btn" onclick="slide('certTrack', 1)">NEXT</button>
+            <button class="nav-btn" onclick="slideCert(-1)">PREV</button>
+            <button class="nav-btn" onclick="slideCert(1)">NEXT</button>
         </div>
     </div>
 
     <div class="container">
-        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:60px;">
-            <div style="font-weight:800; font-size:1.2rem; color:var(--accent);">HARSHZYNX.IO</div>
-            <button onclick="toggleTheme()" class="sec-btn" style="padding:8px 20px; font-size:14px;">Night Mode</button>
+        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:50px;">
+            <div style="font-weight:800; color:var(--accent); font-size:1.2rem;">HARSHZYNX.IO</div>
+            <button onclick="toggleTheme()" class="sec-btn">Night Mode</button>
         </header>
 
         <section>
-            <h1 style="font-family:'Plus Jakarta Sans'; font-size:clamp(3rem, 10vw, 5.5rem); line-height:0.9; margin-bottom:25px;">Harsh<br>Raj.</h1>
-            <p style="color:var(--text-dim); font-size:1.2rem; max-width:600px; margin-bottom:40px;">
-                Full Stack Developer at Marwadi University. Specialized in building functional and delightful technical products.
+            <h1 style="font-family:'Plus Jakarta Sans'; font-size:clamp(3rem, 10vw, 5rem); line-height:1; margin-bottom:20px;">Harsh<br>Raj.</h1>
+            <p style="color:var(--text-dim); font-size:1.1rem; max-width:600px; margin-bottom:30px;">
+                Full Stack Developer at Marwadi University. Explore my professional certifications and academic journey.
             </p>
             
-            <div style="display:flex; gap:15px; flex-wrap:wrap;">
-                <button class="main-btn" onclick="openModal('photoVault')"><i class="fas fa-camera"></i> Photos</button>
-                <button class="sec-btn" onclick="openModal('certVault')"><i class="fas fa-medal"></i> Certificates</button>
-                <a href="https://wa.me/919263216785" class="main-btn" style="background:#22c55e; text-decoration:none;">WhatsApp</a>
+            <div class="btn-row" style="justify-content: flex-start;">
+                <button class="main-btn" onclick="openModal('certVault')"><i class="fas fa-medal"></i> View Certificates (1-7)</button>
+                <a href="https://wa.me/919263216785" class="main-btn" style="background:#22c55e; text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </section>
 
-        <section style="margin-top:80px;">
-            <h2 style="font-size:2rem; margin-bottom:30px;">Education</h2>
-            <div style="background:var(--card); border:1px solid var(--border); border-radius:24px; padding:35px;">
+        <section style="margin-top:60px;">
+            <h2 style="font-size:1.8rem; margin-bottom:25px;">Education</h2>
+            <div style="background:var(--card); border:1px solid var(--border); border-radius:24px; padding:30px;">
                 <p><b>Marwadi University, Rajkot</b><br>B.Tech Computer Science (2024-2028)</p>
                 <hr style="margin:20px 0; border:0; border-top:1px solid var(--border);">
-                <p><b>Manas International School, Bihar</b><br>10th & 12th Grades Education Archive</p>
+                <p><b>Manas International School, Jehanabad</b><br>Education Archive</p>
             </div>
         </section>
     </div>
 
     <script>
-        let pos = { certTrack: 0, photoTrack: 0 };
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        let certPos = 0;
+        const certNames = ["Certificate 1", "Certificate 2", "Certificate 3", "Certificate 4", "Certificate 6", "Certificate 7"];
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
         
-        function slide(id, dir) {
-            const track = document.getElementById(id);
-            const items = track.children.length;
-            pos[id] = (pos[id] + dir + items) % items;
-            track.style.transform = `translateX(-${pos[id] * 100}%)`;
+        function slideCert(dir) {
+            const track = document.getElementById('certTrack');
+            const total = certNames.length;
+            certPos = (certPos + dir + total) % total;
+            track.style.transform = `translateX(-${certPos * 100}%)`;
+            document.getElementById('certName').innerText = certNames[certPos];
         }
+
         function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
     </script>
 </body>
