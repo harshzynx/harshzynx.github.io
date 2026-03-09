@@ -3,158 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta name="google-site-verification" content="MzRa-c-0qGRbnGtsAU_ETOSU_B0p7kaao4oCHIv3Ibc" />
-
-    <meta name="description" content="Official Portfolio of Harsh Raj (Harshzynx). B.Tech CS Scholar at Marwadi University.">
-    <title>Harsh Raj — Full Stack Engineer</title>
+    <meta name="description" content="Official Portfolio of Harsh Raj (Harshzynx).">
+    <title>Harsh Raj — Portfolio</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { 
-            --bg: #0a0c10; --card: #12151c; --accent: #3b82f6; 
-            --text-main: #f8fafc; --text-dim: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08); --success: #22c55e;
-        }
-        [data-theme="light"] {
-            --bg: #ffffff; --card: #f8fafc; --text-main: #0f172a; --text-dim: #64748b;
-            --border: rgba(0, 0, 0, 0.08);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: 0.4s; }
-        .container { max-width: 850px; margin: 0 auto; padding: 60px 24px; }
-
-        .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .theme-toggle { 
-            background: var(--card); border: 1px solid var(--border); padding: 10px 20px; 
-            border-radius: 100px; cursor: pointer; color: var(--text-main); font-weight: 600;
-            display: flex; align-items: center; gap: 10px; font-size: 14px;
-        }
-
-        .hero-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 800; line-height: 0.9; letter-spacing: -3px; margin-bottom: 25px; }
-        .socials { display: flex; gap: 20px; font-size: 24px; margin-bottom: 40px; }
-        .socials a { color: var(--text-dim); transition: 0.3s; }
-        .socials a:hover { color: var(--accent); transform: translateY(-3px); }
-
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 32px; }
-        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; font-family: 'Plus Jakarta Sans'; color: var(--accent); }
-
-        /* 🖼️ HIDDEN GALLERY VAULT (ZERO REMOVAL) */
-        #certVault {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); z-index: 2000; display: none;
-            flex-direction: column; align-items: center; justify-content: center;
-        }
-        .close-vault { position: absolute; top: 30px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
+        :root { --bg: #0a0c10; --card: #12151c; --accent: #3b82f6; --text: #f8fafc; --border: rgba(255, 255, 255, 0.08); }
+        [data-theme="light"] { --bg: #ffffff; --card: #f8fafc; --text: #0f172a; --border: rgba(0, 0, 0, 0.08); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.4s; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 24px; }
         
-        .slider-viewport { 
-            width: 85%; max-width: 900px; height: 550px; 
-            border-radius: 25px; overflow: hidden; position: relative; 
-            border: 3px solid var(--accent); 
-        }
-        .slider-track { display: flex; width: 700%; height: 100%; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
-        .slider-track img { width: calc(100% / 7); height: 100%; object-fit: contain; background: #000; }
-
-        .slider-nav { margin-top: 20px; display: flex; gap: 15px; }
-        .nav-btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 600; }
-
-        footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border); color: var(--text-dim); text-align: center; }
+        .hero-name { font-family: 'Plus Jakarta Sans'; font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 30px; }
+        
+        /* OVERLAY SYSTEM */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 30px; color: white; cursor: pointer; }
+        
+        .slider-box { width: 90%; max-width: 800px; height: 500px; border: 2px solid var(--accent); border-radius: 20px; overflow: hidden; }
+        .track { display: flex; transition: 0.5s; height: 100%; }
+        .track img { width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; background: #000; }
+        
+        .btn-group { display: flex; gap: 15px; margin-top: 20px; }
+        .action-btn { background: var(--accent); color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-weight: 600; }
+        .gallery-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 12px; cursor: pointer; }
     </style>
 </head>
 <body data-theme="dark">
 
-    <div id="certVault">
-        <span class="close-vault" onclick="closeVault()">&times; Close</span>
-        <div class="slider-viewport">
-            <div class="slider-track" id="sliderTrack">
-                <img src="1000131609.jpg" alt="Cert 1">
-                <img src="1000131600.jpg" alt="Cert 2">
-                <img src="1000131603.jpg" alt="Cert 3">
-                <img src="1000131615.jpg" alt="Cert 4">
-                <img src="1000131612.jpg" alt="Cert 5">
-                <img src="1000131606.jpg" alt="Cert 6">
-                <img src="1000131618.jpg" alt="Cert 7">
+    <div id="photoOverlay" class="overlay">
+        <span class="close-btn" onclick="closeAll()">&times;</span>
+        <h2 style="color:white; margin-bottom:15px;">Personal Gallery</h2>
+        <div class="slider-box">
+            <div class="track" id="photoTrack">
+                <img src="photo1.jpg"> <img src="photo2.jpg"> <img src="Photo3.jpg"> <img src="photo4 (1).jpg">
             </div>
         </div>
-        <div class="slider-nav">
-            <button class="nav-btn" onclick="moveSlider(-1)">Prev</button>
-            <button class="nav-btn" onclick="moveSlider(1)">Next</button>
+        <div class="btn-group">
+            <button class="action-btn" onclick="moveSlide('photoTrack', -1)">Prev</button>
+            <button class="action-btn" onclick="moveSlide('photoTrack', 1)">Next</button>
+        </div>
+    </div>
+
+    <div id="certOverlay" class="overlay">
+        <span class="close-btn" onclick="closeAll()">&times;</span>
+        <h2 style="color:white; margin-bottom:15px;">Elite Certificates</h2>
+        <div class="slider-box">
+            <div class="track" id="certTrack">
+                <img src="1000131609.jpg"> <img src="1000131600.jpg"> <img src="1000131603.jpg"> 
+                <img src="1000131615.jpg"> <img src="1000131612.jpg"> <img src="1000131606.jpg"> <img src="1000131618.jpg">
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="action-btn" onclick="moveSlide('certTrack', -1)">Prev</button>
+            <button class="action-btn" onclick="moveSlide('certTrack', 1)">Next</button>
         </div>
     </div>
 
     <div class="container">
-        <div class="header-nav">
-            <div style="font-weight: 700; color: var(--accent);">HARSHZYNX Node</div>
-            <button class="theme-toggle" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i> <span>Night Mode</span>
-            </button>
-        </div>
+        <header style="display:flex; justify-content:space-between; margin-bottom:40px;">
+            <div style="font-weight:800; color:var(--accent);">HARSHZYNX</div>
+            <button onclick="toggleTheme()" class="gallery-btn">Night Mode</button>
+        </header>
 
-        <section class="hero">
+        <section>
             <h1 class="hero-name">Harsh<br>Raj.</h1>
-            <p style="font-size: 1.25rem; color: var(--text-dim); max-width: 600px; margin-bottom: 30px;">
-                Full Stack Engineer & Visual Designer. Currently at Marwadi University, Rajkot. Python & React Specialist.
-            </p>
-            <div class="socials">
-                <a href="https://x.com/harshzynx" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://github.com/harsh62h" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://instagram.com/harshzynx" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:harshsharma18089@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div style="display: flex; gap: 15px; margin-bottom: 60px;">
-                <a href="https://wa.me/919263216785" style="background:var(--success); color:white; padding:12px 24px; border-radius:12px; text-decoration:none; font-weight:700;">Chat on WA</a>
-                
-                <button onclick="openVault()" style="background:var(--card); border:1px solid var(--border); color:white; padding:12px 24px; border-radius:12px; cursor:pointer;">
-                    <i class="fas fa-certificate"></i> Open Certifications Gallery
-                </button>
+            <p style="color:var(--text-dim); margin-bottom:30px;">B.Tech Computer Science @ Marwadi University.</p>
+            
+            <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                <button class="action-btn" onclick="openBox('photoOverlay')"><i class="fas fa-images"></i> My Photos</button>
+                <button class="gallery-btn" onclick="openBox('certOverlay')"><i class="fas fa-certificate"></i> My Certificates</button>
+                <a href="https://wa.me/919263216785" class="action-btn" style="text-decoration:none; background:#22c55e;">WhatsApp</a>
             </div>
         </section>
 
-        <section id="journey">
-            <h2 class="section-title">Academic Journey</h2>
+        <section style="margin-top:50px;">
+            <h2 style="font-size:1.8rem; margin-bottom:20px;">Education Archive</h2>
             <div class="card">
-                <p><b>Marwadi University, Rajkot</b><br>B.Tech Computer Science (2024-2028)</p>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border);">
-                <p><b>Manas International School, Bihar</b><br>10th & 12th Grades Complete</p>
+                <p><b>Marwadi University, Rajkot</b><br>B.Tech CS (2024-2028)</p>
+                <hr style="margin:15px 0; border:0; border-top:1px solid var(--border);">
+                <p><b>Manas International School, Jehanabad</b><br>10th & 12th Grades</p>
             </div>
         </section>
-
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p style="color:var(--text-dim);">Passionate Full Stack Developer specializing in building functional and delightful products. Focused on Python, React, and Cloud Architectures.</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>Built by <b>Harshzynx</b> | Rajkot, Gujarat</p>
-            <p style="font-size: 12px; margin-top: 5px;">© 2026 All Rights Reserved.</p>
-        </footer>
     </div>
 
     <script>
-        // VAULT LOGIC
-        function openVault() { document.getElementById('certVault').style.display = 'flex'; }
-        function closeVault() { document.getElementById('certVault').style.display = 'none'; }
-
-        // SLIDER LOGIC
-        let currentSlide = 0;
-        const totalSlides = 7;
-        function moveSlider(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            const offset = -currentSlide * (100 / totalSlides);
-            document.getElementById('sliderTrack').style.transform = `translateX(${offset}%)`;
+        let slides = { certTrack: 0, photoTrack: 0 };
+        function openBox(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeAll() { document.querySelectorAll('.overlay').forEach(el => el.style.display = 'none'); }
+        
+        function moveSlide(trackId, dir) {
+            const track = document.getElementById(trackId);
+            const total = track.children.length;
+            slides[trackId] = (slides[trackId] + dir + total) % total;
+            track.style.transform = `translateX(-${slides[trackId] * 100}%)`;
         }
-
-        // NIGHT MODE LOGIC
-        function toggleTheme() {
-            const body = document.body;
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        }
+        function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
     </script>
 </body>
 </html>
