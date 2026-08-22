@@ -48,7 +48,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with AI Avatar Integration -->
     <section class="relative pt-24 pb-20 overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -74,21 +74,17 @@
                     </div>
                 </div>
 
-                <!-- Right Content: Profile / Placeholder Box (No missing video error) -->
+                <!-- Right Content: AI Video Presentation Box -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="glass p-6 rounded-3xl shadow-2xl border border-blue-500/30 text-center w-full max-w-sm relative">
+                    <div class="glass p-3 rounded-3xl shadow-2xl border border-blue-500/30 relative w-full max-w-sm">
                         <div class="absolute -top-3 -right-3 px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full shadow-lg z-10 flex items-center gap-1.5">
-                            <i class="fas fa-code"></i> Developer
+                            <i class="fas fa-microphone-alt"></i> AI Intro
                         </div>
-                        <div class="w-28 h-28 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-4xl font-extrabold text-white shadow-xl shadow-blue-500/20">
-                            HR
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Harsh Raj</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
-                            "Building digital experiences and crafting scalable software solutions."
-                        </p>
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-blue-400 text-xs font-medium">
-                            <i class="fas fa-circle text-[8px] animate-ping"></i> Open to Work
+                        <div class="rounded-2xl overflow-hidden aspect-[9/16] max-h-[420px] w-full bg-slate-950 flex items-center justify-center relative shadow-inner">
+                            <video controls autoplay muted loop playsinline class="w-full h-full object-cover">
+                                <source src="avatar.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
